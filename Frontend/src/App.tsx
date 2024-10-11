@@ -1,13 +1,18 @@
 // import React from 'react'
+import { StrictMode } from 'react'
 import './App.css'
-import Students from './students'
+import Students from './contentDisplay/students'
+import Teachers from './contentDisplay/Teachers'
+import Users from './contentDisplay/usersModel'
 
 function App() {
-   return (
-    <>
+  return (
+    <StrictMode>
       <p className='font-bold underline'></p>
       <Students />
-    </>
+      <Teachers />
+      <Users />
+    </StrictMode>
   )
 }
 
