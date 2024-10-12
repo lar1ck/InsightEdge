@@ -41,19 +41,32 @@ function App() {
 
         <div className='mt-7'>
           <nav className='h-auto flex flex-col font-semibold  '>
-            <button onClick={toogleOpenUser} className='p-2  rounded-md my-1 transition duration-300 hover:bg-indigo-500 flex items-center w-full text-left'>
-              <RiHomeLine className='mr-2' />
-              Users
-              {isUserOpen ? (
-                <FaCaretUp className='ml-[140px]' />
-              ) : (
-                <FaCaretDown className='ml-[140px]' />
-              )}
+            <button
+              onClick={toogleOpenUser}
+              className='p-2 rounded-md my-1 transition duration-300 hover:bg-indigo-500 flex items-center justify-between w-full text-left'
+            >
+              <div className='flex items-center'>
+                <RiHomeLine className='mr-2' />
+                Products
+              </div>
+              <div className='flex items-center'>
+                {isUserOpen ? (
+                  <FaCaretUp />
+                ) : (
+                  <FaCaretDown />
+                )}
+              </div>
             </button>
+
             {isUserOpen && (
-              <Link to="/users" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-indigo-300 flex items-center'>
-                All Users
-              </Link>
+              <div className='bg-neutral-100 rounded-xl p-1'>
+                <Link to="/products" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-indigo-300 flex items-center'>
+                  All Products
+                </Link>
+                <Link to="/products" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-indigo-300 flex items-center'>
+                  Update a product
+                </Link>
+              </div>
             )}
 
             <button onClick={toogleOpenTeacher} className='p-2 rounded-md my-1 transition duration-300  hover:bg-indigo-500 flex items-center'>
