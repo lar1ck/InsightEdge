@@ -36,7 +36,7 @@ function App() {
       <div className='h-screen w-[20%] border border-neutral-300 px-5 sticky'>
         <div className='flex items-center'>
           <div className='h-[30px] w-[30px] rounded-full bg-indigo-700 mt-4'></div>
-          <p className='mt-3 font-semibold text-xl ml-1'>InsightEdge</p>
+          <p className='mt-3 font-semibold text-xl ml-1'><Link to="/">InsightEdge</Link> </p>
         </div>
 
         <div className='mt-7'>

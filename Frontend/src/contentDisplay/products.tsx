@@ -54,7 +54,7 @@ const Products = () => {
                             <div className="max-w-[50%] mb-1">
                                 <h2 className="text-xl font-bold  mb-2 ">{product.name}</h2>
                                 <p className="text-gray-700 mb-1">
-                                    <span className="font-semibold">Description:</span> {product.description}
+                                    <span className="font-semibold ">Description:</span> {product.description}
                                 </p>
                                 <p className="text-gray-700 mb-1">
                                     <span className="font-semibold">Price:</span> {product.price} {product.currency}

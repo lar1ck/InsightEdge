@@ -15,7 +15,7 @@ interface productProps {
 
 const Editproduct = () => {
     const { id } = useParams();
-    const [product, setProduct] = useState<productProps | null>(null); // Change to null for single product
+    const [product, setProduct] = useState<productProps | null>(null); 
     const [formData, setFormData] = useState({
         name: "",
         description: "",
