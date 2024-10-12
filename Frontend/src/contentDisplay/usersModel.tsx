@@ -20,11 +20,11 @@ const Users = () => {
     });
 
     return (
-        <div className='my-5'>
+        <div className='m'>
            <h1 className='text-3xl font-bold '>Users' List</h1> 
-            <div className='grid grid-cols-4 gap-6 mx-6 '>
+            <div className='mb-1'>
                 {users.map((user) => (
-                    <div key={user._id} className='mt-3'>
+                    <div key={user._id} className='my-4'>
                         <p className='border border-blue-600 p-3'>
                             <span className="font-semibold text-lg">Name:</span> {user.name} <br />
                             <span className="font-semibold text-lg">Age:</span> {user.age} <br />

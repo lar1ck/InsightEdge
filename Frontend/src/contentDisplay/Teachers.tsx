@@ -26,9 +26,9 @@ const Teachers = () => {
 
 
     return (
-        <div className='m'>
-            <h1 className='font-bold text-3xl mb-5'>List of teachers</h1>
-            <div className='grid grid-cols-4 gap-6 mx-6'>
+        <div className=''>
+            <h1 className='font-bold text-3xl '>List of teachers</h1>
+            <div className='grid grid-cols-3 gap-6 '>
             {teachers.map((teacher) => (
                     <div key={teacher._id} className="">
                         <p className='border border-blue-600 p-3'>

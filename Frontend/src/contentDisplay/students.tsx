@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+
 interface studentsProps {
     _id: string;
     name: string;
@@ -26,11 +27,11 @@ const Students = () => {
         getStudents();
     }, [])
     return (
-        <div className=" mx-auto my-8">
-            <h1 className="text-3xl font-bold  mb-8">List of Students</h1>
-            <div className="grid grid-cols-4 gap-6 mx-6">
+        <div className=" ">
+            <h1 className="text-3xl font-bold ">List of Students</h1>
+            <div className="">
                 {students.map((student) => (
-                    <div key={student._id} className="border-2 border-neutral-300 rounded-lg  p-4">
+                    <div key={student._id} className="border-2 border-neutral-300 rounded-lg p-4 my-2">
                         <p>
                             <span className="font-semibold text-lg">Name:</span> {student.name} <br />
                             <span className="font-semibold text-lg">Age:</span> {student.age} <br />
