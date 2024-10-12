@@ -14,8 +14,8 @@ interface productsProps {
     stock: number,
     brand: string,
     image: string,
-    createdAt: string | Date,
-    updatedAt: string | Date,
+    createdAt: string ,
+    updatedAt: string ,
 }
 
 const Products = () => {
@@ -69,10 +69,10 @@ const Products = () => {
                                     <span className="font-semibold">Brand:</span> {product.brand}
                                 </p>
                                 <p className="text-gray-700 mb-1">
-                                    <span className="font-semibold">Created At:</span> {new Date(product.createdAt).toLocaleDateString()}
+                                    <span className="font-semibold">Created At:</span> {new Date(product.createdAt).toLocaleDateString()} {new Date(product.createdAt).toLocaleTimeString()}
                                 </p>
                                 <p className="text-gray-700 mb-1">
-                                    <span className="font-semibold">Updated At:</span> {new Date(product.updatedAt).toLocaleDateString()}
+                                    <span className="font-semibold">Updated At:</span> {new Date(product.updatedAt).toLocaleDateString()} {new Date(product.updatedAt).toLocaleTimeString()}  
                                 </p>
                             </div>
                         </div>
