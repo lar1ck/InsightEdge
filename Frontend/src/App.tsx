@@ -36,7 +36,7 @@ function App() {
       <div className='h-screen w-[20%] border border-neutral-300 px-5 sticky'>
         <div className='flex items-center'>
           <div className='h-[30px] w-[30px] rounded-full bg-indigo-700 mt-4'></div>
-          <p className='mt-3 font-semibold text-2xl ml-1'>Omoi</p>
+          <p className='mt-3 font-semibold text-xl ml-1'>InsightEdge</p>
         </div>
 
         <div className='mt-7'>
@@ -63,8 +63,8 @@ function App() {
                 <Link to="/products" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-indigo-300 flex items-center'>
                   All Products
                 </Link>
-                <Link to="/products" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-indigo-300 flex items-center'>
-                  Update a product
+                <Link to="/product/new" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-indigo-300 flex items-center'>
+                  New Product
                 </Link>
               </div>
             )}

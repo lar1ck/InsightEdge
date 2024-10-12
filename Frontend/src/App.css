@@ -18,3 +18,7 @@
     scrollbar-color: #50505a #ffffff; 
   }
   
+  ::selection{
+    background-color: rgb(46, 0, 130);
+    color: white;
+  }
