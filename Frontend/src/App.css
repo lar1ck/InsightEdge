@@ -15,10 +15,12 @@
   
   * {
     scrollbar-width: thin; 
-    scrollbar-color: #50505a #ffffff; 
+    scrollbar-color: #50505a #F1F7F7; 
+    background-color: #F1F7F7;
   }
   
   ::selection{
     background-color: rgba(60, 52, 71, 0.856);
     color: white;
   }
+

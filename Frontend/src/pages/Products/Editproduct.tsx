@@ -63,11 +63,13 @@ const Editproduct = () => {
             e.preventDefault();
             await axios.put(`http://localhost:3000/product/${id}`, formData);
             navigate("/products");
+        }else{
+            navigate("/products");
         }
     };
 
     return (
-        <div className=" p-6 rounded-lg bg-neutral-50">
+        <div className=" p-6 rounded-lg">
             {product ? ( 
                 <div >
                     <h1 className="text-2xl font-semibold flex mb-6">Edit : <p className='text-blue-700'> {product.name}</p></h1>

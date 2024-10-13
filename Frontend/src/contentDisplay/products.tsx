@@ -44,12 +44,12 @@ const Products = () => {
     return (
         <div className='m'>
             <h1 className='text-3xl font-bold '>Products' List</h1>
-            <div className='mb-1'>
+            <div className='mb-1 '>
                 {products.map((product) => (
-                    <div key={product._id} className="my-2 bg-neutral-50 p-5">
-                        <div className=" rounded-lg flex  gap-6">
+                    <div key={product._id} className="border-b-4 border-neutral-400 my-2  p-5">
+                        <div className=" rounded-lg flex  gap-1">
                             <div className='w-[50%]'>
-                                <img src={product.image} className='rounded-lg' alt={`this is an image of ${product.name}`} />
+                                <img src={product.image} className='rounded-lg max-w-[300px]' alt={`this is an image of ${product.name}`} />
                             </div>
                             <div className="max-w-[50%] mb-1">
                                 <h2 className="text-xl font-bold  mb-2 ">{product.name}</h2>
@@ -79,14 +79,14 @@ const Products = () => {
                         <div className="text-right space-x-2">
                             <button
                                 onClick={() => deleteProduct(product._id)}
-                                className="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition-all duration-300"
+                                className="px-4 py-2 group bg-custom-dpink text-white font-semibold rounded-md hover:bg-custom-ddpink transition-all duration-300"
                             >
-                                <RiDeleteBin6Line />
+                                <RiDeleteBin6Line className='bg-custom-dpink group-hover:bg-custom-ddpink duration-300'/>
                             </button>
                             <button
-                                className="px-2 py-1 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-all duration-300"
+                                className="px-2 py-1 group bg-custom-ddback text-white font-semibold rounded-md hover:bg-custom-dback transition-all duration-300"
                             >
-                                <Link to={`/products/edit/${product._id}`}>Update</Link>
+                                <Link to={`/products/edit/${product._id}`} className='bg-custom-ddback group-hover:bg-custom-dback transition-all duration-300'>Update</Link>
                             </button>
                         </div>
                     </div>
