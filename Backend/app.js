@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 // const Teachers = require('./models/teachersModel');
 // const Users = require('./models/usersModel');
 const Products = require("./models/productModel");
+const Users = require("./models/usersModel");
 
 app.use(cors());
 app.use(express.json());
@@ -107,6 +108,75 @@ app.delete("/product/:id", async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
+//create a new user
+app.post('/user', async (req, res) => {
+  try{
+    const user = await Users.create(req.body);
+    res.status(200).json(user); 
+  }catch (err) {
+    res.status(500).json({message: err.message});
+  }
+});
+
+//get all users
+app.get('/users', async (req, res) => {
+  try{
+    const allUsers = await Users.find();
+    res.status(200).json(allUsers)
+  }catch (err) {
+    res.status(500).json({message: err.message});
+  }
+});
+
+//get user by id
+app.get('/user/:id', async (req, res) => {
+  try{
+    const {id} = req.params;
+    const result = await Users.findById(id);
+
+    if(!res){
+      res.status(404).json({message: 'User not found'});
+    }
+
+    res.status(200).json(result)
+  }catch(err){
+    res.status(500).json({message: err.message});
+  }
+})
+
+//delete user by id 
+app.delete('/user/:id', async (req, res) => {
+  try{  
+    const {id} = req.params;
+    const userDel = await Users.findByIdAndDelete(id);
+
+    if(!userDel){
+      return res.status(404).send({message: "User not found"});
+    };
+
+    res.status(200).send({message: "User deleted"});
+  }catch (err) {
+    res.status(500).json({message: err.message});
+  }
+})
+
+
+app.put('/user/:id', async (req, res) => {
+  try{
+    const {id} = req.params;
+    const upUser = await Users.findByIdAndUpdate(id,req.body);
+
+    if(!upUser){
+      return res.status(404).json({message: 'User not found'});
+    }
+
+    const updatedUser = await Users.findById(id)
+    res.status(200).json(updatedUser);
+  }catch (err) {
+    res.status(500).json({message: err.message});
+  }
+})
 
 app.get("/start", (req, res) => {
   res.send("welcome to InsightEdge");
