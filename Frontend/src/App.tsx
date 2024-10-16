@@ -5,7 +5,7 @@ import { useState } from 'react'
 import './App.css'
 import Back from './componets/back'
 import { RiHomeLine } from "react-icons/ri";
-// import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { LuUsers } from "react-icons/lu";
 // import { PiUsersDuotone } from "react-icons/pi";
 import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
@@ -15,14 +15,17 @@ import { FaCaretUp } from "react-icons/fa";
 // import Users from './contentDisplay/usersModel'
 
 function App() {
+  const [isProductOpen, setIsProductOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   // const [isTeacherOpen, setIsTeacherOpen,] = useState(false);
   // const [isStudentOpen, setIsStudentOpen,] = useState(false);
 
+  const toogleOpenProduct = () => {
+    setIsProductOpen(!isProductOpen);
+  }
   const toogleOpenUser = () => {
     setIsUserOpen(!isUserOpen);
   }
-
   // const toogleOpenTeacher = () => {
   //   setIsTeacherOpen(!isTeacherOpen);
   // }
@@ -41,8 +44,36 @@ function App() {
 
         <div className='mt-7'>
           <nav className='h-auto flex flex-col font-semibold  '>
-            <button
+            
+          <button
               onClick={toogleOpenUser}
+              className='p-2 rounded-md my-1 group transition duration-300 hover:bg-custom-dback flex items-center justify-between w-full text-left'
+            >
+              <div className='flex items-center group-hover:bg-custom-dback duration-300'>
+                <LuUsers className='mr-2 group-hover:bg-custom-dback duration-300' />
+                Users
+              </div>
+              <div className='flex items-center group-hover:bg-custom-dback duration-300'>
+                {isUserOpen ? (
+                  <FaCaretUp className=' group-hover:bg-custom-dback duration-300' />
+                ) : (
+                  <FaCaretDown className=' group-hover:bg-custom-dback duration-300' />
+                )}
+              </div>
+            </button>
+
+            {isUserOpen && (
+              <div className=' rounded-xl p-1'>
+                <Link to="/users" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
+                  All Users
+                </Link>
+                <Link to="/create/user" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
+                  New User
+                </Link>
+              </div>
+            )}
+            <button
+              onClick={toogleOpenProduct}
               className='p-2 rounded-md my-1 group transition duration-300 hover:bg-custom-dback flex items-center justify-between w-full text-left'
             >
               <div className='flex items-center group-hover:bg-custom-dback duration-300'>
@@ -50,15 +81,15 @@ function App() {
                 Products
               </div>
               <div className='flex items-center group-hover:bg-custom-dback duration-300'>
-                {isUserOpen ? (
-                  <FaCaretUp className=' group-hover:bg-custom-dback duration-300'/>
+                {isProductOpen ? (
+                  <FaCaretUp className=' group-hover:bg-custom-dback duration-300' />
                 ) : (
-                  <FaCaretDown className=' group-hover:bg-custom-dback duration-300'/>
+                  <FaCaretDown className=' group-hover:bg-custom-dback duration-300' />
                 )}
               </div>
             </button>
 
-            {isUserOpen && (
+            {isProductOpen && (
               <div className=' rounded-xl p-1'>
                 <Link to="/products" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
                   All Products
@@ -69,35 +100,8 @@ function App() {
               </div>
             )}
 
-            {/* <button onClick={toogleOpenTeacher} className='p-2 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
-              <TbBrandGoogleAnalytics className='mr-2' />
-              Teachers
-              {isTeacherOpen ? (
-                <FaCaretUp className='ml-[120px]' />
-              ) : (
-                <FaCaretDown className='ml-[115px]' />
-              )}
-            </button>
-            {isTeacherOpen && (
-              <Link to="/Teachers" className='ml-6 p-2 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
-                All Teachers
-              </Link>
-            )}
-
-            <button onClick={toogleOpenStudent} className='p-2 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
-              <PiUsersDuotone className='mr-2' />
-              Students
-              {isStudentOpen ? (
-                <FaCaretUp className='ml-[110px]' />
-              ) : (
-                <FaCaretDown className='ml-[115px]' />
-              )}
-            </button>
-            {isStudentOpen && (
-              <Link to="/students" className='ml-6 p-2 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
-                All Students
-              </Link>
-            )} */}
+            {/* 
+             */}
           </nav>
         </div>
       </div>
