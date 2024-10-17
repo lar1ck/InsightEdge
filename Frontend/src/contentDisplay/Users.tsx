@@ -44,7 +44,7 @@ const Users = () => {
                 {users.map((user) => (
                     <div className=' border border-neutral-600 p-2'>
                         <div key={user._id} className=''>
-                            id : {user._id} <br />
+                             ID : {user._id} <br />
                             name : {user.name} <br />
                             age : {user.age} <br />
                             email : {user.email} <br />

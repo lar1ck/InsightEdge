@@ -50,6 +50,8 @@ const EditUser = () => {
                 e.preventDefault();
                 await axios.put(`http://localhost:3000/user/${id}`, formData);
                 navigate('/users');
+            }else{
+                navigate("/users");
             }
         } catch (err) {
             console.error(err);
