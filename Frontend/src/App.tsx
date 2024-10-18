@@ -6,7 +6,7 @@ import './App.css'
 import Back from './componets/back'
 import { RiHomeLine } from "react-icons/ri";
 import { LuUsers } from "react-icons/lu";
-// import { PiUsersDuotone } from "react-icons/pi";
+import { PiShoppingCartSimple } from "react-icons/pi";
 import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
 
@@ -17,6 +17,7 @@ import { FaCaretUp } from "react-icons/fa";
 function App() {
   const [isProductOpen, setIsProductOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
+  const [isOrderOpen,setIsOrdersOpen] = useState(false);
   // const [isTeacherOpen, setIsTeacherOpen,] = useState(false);
   // const [isStudentOpen, setIsStudentOpen,] = useState(false);
 
@@ -26,6 +27,10 @@ function App() {
   const toogleOpenUser = () => {
     setIsUserOpen(!isUserOpen);
   }
+  const toogleOpenOrder = () => {
+    setIsOrdersOpen(!isOrderOpen);
+  }
+
   // const toogleOpenTeacher = () => {
   //   setIsTeacherOpen(!isTeacherOpen);
   // }
@@ -44,8 +49,8 @@ function App() {
 
         <div className='mt-7'>
           <nav className='h-auto flex flex-col font-semibold  '>
-            
-          <button
+
+            <button
               onClick={toogleOpenUser}
               className='p-2 rounded-md my-1 group transition duration-300 hover:bg-custom-dback flex items-center justify-between w-full text-left'
             >
@@ -96,6 +101,34 @@ function App() {
                 </Link>
                 <Link to="/product/new" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
                   New Product
+                </Link>
+              </div>
+            )}
+
+            <button
+              onClick={toogleOpenOrder}
+              className='p-2 rounded-md my-1 group transition duration-300 hover:bg-custom-dback flex items-center justify-between w-full text-left'
+            >
+              <div className='flex items-center group-hover:bg-custom-dback duration-300'>
+                <PiShoppingCartSimple className='mr-2 group-hover:bg-custom-dback duration-300' />
+                Orders
+              </div>
+              <div className='flex items-center group-hover:bg-custom-dback duration-300'>
+                {isOrderOpen ? (
+                  <FaCaretUp className=' group-hover:bg-custom-dback duration-300' />
+                ) : (
+                  <FaCaretDown className=' group-hover:bg-custom-dback duration-300' />
+                )}
+              </div>
+            </button>
+
+            {isOrderOpen && (
+              <div className=' rounded-xl p-1'>
+                <Link to="/orders" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
+                  All Orders
+                </Link>
+                <Link to="/order/new" className='p-2 ml-6 rounded-md my-1 transition duration-300  hover:bg-custom-dback flex items-center'>
+                  New Order
                 </Link>
               </div>
             )}

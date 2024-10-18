@@ -39,7 +39,7 @@ const Users = () => {
 
     return (
         <div>
-            Users
+            <h1 className='text-3xl font-semibold my-4'> Users </h1>
             <div className='grid grid-cols-2 gap-4'>
                 {users.map((user) => (
                     <div className=' border border-neutral-600 p-2'>

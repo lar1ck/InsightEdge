@@ -4,9 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const PORT = process.env.PORT || 3000;
-// const Students = require('./models/studentsModel');
-// const Teachers = require('./models/teachersModel');
-// const Users = require('./models/usersModel');
+const Orders = require("./models/ordersModel");
 const Products = require("./models/productModel");
 const Users = require("./models/usersModel");
 
@@ -176,6 +174,57 @@ app.put('/user/:id', async (req, res) => {
   }catch (err) {
     res.status(500).json({message: err.message});
   }
+});
+
+//create an oeder
+app.post('/order', async (req, res) => {
+  try{
+    const {product_id,quantity} = req.body;
+
+    const product = await Products.findById(product_id);
+
+    if(!product){
+      return res.status(404).json({message: "Product not found"})
+    }
+
+    if(product.stock < quantity){
+      return res.status(400).json({message:"The quantity is not available"})
+    }
+
+    product.stock -= quantity;
+    await product.save();
+
+    const order = await Orders.create(req.body);
+    res.status(200).json(order);
+  }catch(err) {
+    res.status(500).json({message: err.message});
+  }
+});
+
+//get all orders 
+app.get('/orders', async (req, res) => {
+  try{
+    const orders = await Orders.find();
+    res.status(200).json(orders);
+  }catch(err){
+    res.status(500).json({message: err.message});
+  }
+});
+
+//get order by id
+app.get('/order/:id', async (req, res) => {
+  try{
+    const {id} = req.params;
+    const order = await Orders.findById(id);
+
+    if(!order){
+      return res.status(404).json({message: 'Order not found'});
+    }
+
+    res.status(200).json(order);
+  }catch(err){
+    res.status(500).json({message: err.message});
+  }
 })
 
 app.get("/start", (req, res) => {
@@ -183,5 +232,5 @@ app.get("/start", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("listening on port: http://localhost:", PORT);
+  console.log("listening on port: http://localhost:",PORT);
 });
