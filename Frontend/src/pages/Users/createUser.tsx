@@ -6,6 +6,7 @@ interface userProps {
     name: string,
     age: number,
     email: string,
+    password: string,
 }
 
 const CreateUser = () => {
@@ -13,6 +14,7 @@ const CreateUser = () => {
         name: "",
         age: 0,
         email: "",
+        password: "",
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,6 +33,7 @@ const CreateUser = () => {
             name: "",
             age: 0,
             email: "",
+            password: "",
         });
         console.log("new user created", newUser);
         navigate('/users');
@@ -71,6 +74,17 @@ const CreateUser = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder='Email'
+                        className='mt-1 block w-full border border-gray-300 outline-none rounded-md p-2'
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="">Password</label>
+                    <input type="password"
+                        name='password'
+                        value={formData.password}
+                        onChange={handleChange}
+                        placeholder='Password'
                         className='mt-1 block w-full border border-gray-300 outline-none rounded-md p-2'
                         required
                     />

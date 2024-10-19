@@ -147,14 +147,19 @@ app.delete('/user/:id', async (req, res) => {
 app.put('/user/:id', async (req, res) => {
   try{
     const {id} = req.params;
-    const upUser = await Users.findByIdAndUpdate(id,req.body);
+    const {password, ...rest} = req.body;
+    const upUser = await Users.findByIdAndUpdate(id,rest,{new: true});
 
     if(!upUser){
       return res.status(404).json({message: 'User not found'});
     }
 
-    const updatedUser = await Users.findById(id)
-    res.status(200).json(updatedUser);
+    if(password){
+      upUser.password = password;
+      await upUser.save();
+    }
+
+    res.status(200).json(upUser);
   }catch (err) {
     res.status(500).json({message: err.message});
   }
@@ -216,5 +221,5 @@ app.get("/start", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("listening on port: http://localhost:",PORT);
+  console.log(`listening on port: http://localhost:${PORT}`);
 });

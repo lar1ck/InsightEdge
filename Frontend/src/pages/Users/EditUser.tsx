@@ -6,6 +6,7 @@ interface userProps {
     name: string;
     email: string;
     age: number;
+    password: string;
 }
 
 const EditUser = () => {
@@ -15,6 +16,7 @@ const EditUser = () => {
         name: "",
         email: "",
         age: 0,
+        password: "",
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -33,6 +35,7 @@ const EditUser = () => {
                     name: res.data.name,
                     email: res.data.email,
                     age: res.data.age,
+                    password: "",
                 });
             } catch (err) {
                 console.error(err);
@@ -92,6 +95,16 @@ const EditUser = () => {
                             value={formData.age}
                             onChange={handleChange}
                             placeholder='Age'
+                            className='mt-1 block  border border-gray-300 outline-none rounded-md p-2 '
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="">Password</label>
+                        <input type="password"
+                            name='password'
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder='Password'
                             className='mt-1 block  border border-gray-300 outline-none rounded-md p-2 '
                         />
                     </div>
