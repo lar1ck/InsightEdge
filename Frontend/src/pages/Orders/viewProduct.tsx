@@ -39,7 +39,7 @@ const ViewProduct = () => {
     return (
         <div>
             
-            ViewProduct
+           <h1 className='text-3xl ml-5 font-semibold'> {product.name} </h1>
             
                 <div  className='border-1 border-neutral-400 my-2  p-5'>
                     <div className=" rounded-lg flex  gap-1">
@@ -47,7 +47,7 @@ const ViewProduct = () => {
                                 <img src={product.image} className='rounded-lg max-w-[300px]' alt={`this is an image of ${product.name}`} />
                             </div>
                             <div className="max-w-[50%] mb-1">
-                                <h2 className="text-xl font-bold  mb-2 ">{product.name}</h2>
+                                <h2 className="text-xl font-bold  mb-2 "></h2>
                                 <p className="text-gray-700 mb-1">
                                     <span className="font-semibold ">Description:</span> {product.description}
                                 </p>

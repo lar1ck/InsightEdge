@@ -14,6 +14,7 @@ import EditUser from './pages/Users/EditUser.tsx'
 import CreateOrders from './pages/Orders/createOrders.tsx'
 import Orders from './contentDisplay/Orders.tsx'
 import ViewProduct from './pages/Orders/viewProduct.tsx'
+import NotFound from './pages/NotFound/NotFound.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -35,6 +36,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path='/orders' element={<Orders />} />
           <Route path='/order/:id' element={<ViewProduct />} />
         </Route>
+        <Route path='*' element={<NotFound />} />
         <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>

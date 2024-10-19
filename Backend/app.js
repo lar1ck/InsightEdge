@@ -75,22 +75,6 @@ app.put("/product/:id", async (req, res) => {
   }
 });
 
-//update a product by it's name 
-// app.put('/product/:name', async (req, res) => {
-//     try{
-//         const { name } = req.params;
-//         const product = await Products.findOneAndUpdate({ name: name }, req.body , {new : true, runValidators: true});
-
-//         if(!product){
-//            return res.status(404).json({message: 'Product not found'});
-//         }
-
-//         res.status(200).json(product);
-//     }catch(err){
-//         res.status(400).json({ message: err.message });
-//     }
-// });
-
 //delete a product by its ID
 app.delete("/product/:id", async (req, res) => {
   try {

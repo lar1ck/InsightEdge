@@ -28,7 +28,7 @@ const Students = () => {
     }, [])
     return (
         <div className=" ">
-            <h1 className="text-3xl font-bold ">List of Students</h1>
+            <h1 className="text-3xl  ">List of Students</h1>
             <div className="">
                 {students.map((student) => (
                     <div key={student._id} className="border-2 border-neutral-300 rounded-lg p-4 my-2">

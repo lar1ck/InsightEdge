@@ -72,7 +72,7 @@ const Editproduct = () => {
         <div className=" p-6 rounded-lg">
             {product ? ( 
                 <div >
-                    <h1 className="text-2xl font-semibold flex mb-6">Edit : <p className='text-blue-700'> {product.name}</p></h1>
+                    <h1 className="text-2xl font-semibold flex mb-6">Edit : <p className='text-custom-dblue'> {product.name}</p></h1>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className='flex gap-5'>
                             <div className='w-full'>
@@ -165,7 +165,7 @@ const Editproduct = () => {
                         </div>
                         <button
                             type="submit"
-                            className="px-2 bg-indigo-400 text-white py-2 rounded-md hover:bg-indigo-500 transition duration-200"
+                            className="px-2 bg-custom-dblue text-white py-2 rounded-md hover:bg-custom-ddblue transition duration-200"
                         >
                             Update Product
                         </button>

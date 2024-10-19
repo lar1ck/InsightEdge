@@ -6,20 +6,16 @@ import './App.css'
 import Back from './componets/back'
 import { RiHomeLine } from "react-icons/ri";
 import { LuUsers } from "react-icons/lu";
-import { PiShoppingCartSimple } from "react-icons/pi";
+// import { PiShoppingCartSimple } from "react-icons/pi"; //chart icon
 import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
-
-// import Students from './contentDisplay/students'
-// import Teachers from './contentDisplay/Teachers'
-// import Users from './contentDisplay/usersModel'
+import Tr_bg_logo from "./assets/IElogo/tr_bg_logo.png"
+import { FaListUl } from "react-icons/fa";
 
 function App() {
   const [isProductOpen, setIsProductOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isOrderOpen,setIsOrdersOpen] = useState(false);
-  // const [isTeacherOpen, setIsTeacherOpen,] = useState(false);
-  // const [isStudentOpen, setIsStudentOpen,] = useState(false);
 
   const toogleOpenProduct = () => {
     setIsProductOpen(!isProductOpen);
@@ -31,23 +27,17 @@ function App() {
     setIsOrdersOpen(!isOrderOpen);
   }
 
-  // const toogleOpenTeacher = () => {
-  //   setIsTeacherOpen(!isTeacherOpen);
-  // }
-
-  // const toogleOpenStudent = () => {
-  //   setIsStudentOpen(!isStudentOpen);
-  // }
-
   return (
     <div className='flex '>
       <div className='h-screen w-[20%] border border-neutral-300 px-5 sticky'>
         <div className='flex items-center'>
-          <div className='h-[30px] w-[30px] rounded-full bg-custom-ddback mt-4'></div>
+          <div className='h-[60px] w-[60px] rounded-full  mt-4 overflow-hidden '>
+            <img src={Tr_bg_logo} alt="" className='h-full w-full object-cover'/>
+          </div>
           <p className='mt-3 font-semibold text-xl ml-1'><Link to="/">InsightEdge</Link> </p>
         </div>
 
-        <div className='mt-7'>
+        <div className='mt-2'>
           <nav className='h-auto flex flex-col font-semibold  '>
 
             <button
@@ -110,7 +100,7 @@ function App() {
               className='p-2 rounded-md my-1 group transition duration-300 hover:bg-custom-dback flex items-center justify-between w-full text-left'
             >
               <div className='flex items-center group-hover:bg-custom-dback duration-300'>
-                <PiShoppingCartSimple className='mr-2 group-hover:bg-custom-dback duration-300' />
+                <FaListUl className='mr-2 group-hover:bg-custom-dback duration-300' />
                 Orders
               </div>
               <div className='flex items-center group-hover:bg-custom-dback duration-300'>
@@ -139,7 +129,7 @@ function App() {
         </div>
       </div>
       <div className='h-screen w-[60%] px-3 overflow-y-auto'>
-        <p className="text-2xl  mt-2"><Back /></p>
+        <p className="text-2xl mt-2"><Back /></p>
         <Outlet />
       </div>
 

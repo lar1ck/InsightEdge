@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+import { IoMdAdd } from "react-icons/io";
 
 interface productsProps {
     _id: string,
@@ -14,8 +14,8 @@ interface productsProps {
     stock: number,
     brand: string,
     image: string,
-    createdAt: string ,
-    updatedAt: string ,
+    createdAt: string,
+    updatedAt: string,
 }
 
 const Products = () => {
@@ -42,8 +42,17 @@ const Products = () => {
     }
 
     return (
-        <div className='m'>
-            <h1 className='text-3xl font-bold '>Products' List</h1>
+        <div className=''>
+            <div className='font-semibold mt-2  flex items-center justify-between'>
+                <h1 className='text-3xl'>Products' List</h1>
+                <div
+                    className='text-right py-1 text-white rounded-lg pr-4 pl-2 bg-custom-blue group hover:bg-custom-dblue duration-300 hover:scale-x-110'>
+                    <Link to="/product/new" className='bg-custom-blue group group-hover:bg-custom-dblue duration-300 flex items-center'>
+                        <IoMdAdd className='bg-custom-blue text-xl mx-1 group-hover:bg-custom-dblue duration-300' />
+                        <span className='bg-custom-blue group group-hover:bg-custom-dblue duration-300 '> new</span>
+                    </Link>
+                </div>
+            </div>
             <div className='mb-1 '>
                 {products.map((product) => (
                     <div key={product._id} className="border-b-4 border-neutral-400 my-2  p-5">
@@ -72,7 +81,7 @@ const Products = () => {
                                     <span className="font-semibold">Created At:</span> {new Date(product.createdAt).toLocaleDateString()} {new Date(product.createdAt).toLocaleTimeString()}
                                 </p>
                                 <p className="text-gray-700 mb-1">
-                                    <span className="font-semibold">Updated At:</span> {new Date(product.updatedAt).toLocaleDateString()} {new Date(product.updatedAt).toLocaleTimeString()}  
+                                    <span className="font-semibold">Updated At:</span> {new Date(product.updatedAt).toLocaleDateString()} {new Date(product.updatedAt).toLocaleTimeString()}
                                 </p>
                             </div>
                         </div>
@@ -81,7 +90,7 @@ const Products = () => {
                                 onClick={() => deleteProduct(product._id)}
                                 className="px-4 py-2 group bg-custom-dpink text-white font-semibold rounded-md hover:bg-custom-ddpink transition-all duration-300"
                             >
-                                <RiDeleteBin6Line className='bg-custom-dpink group-hover:bg-custom-ddpink duration-300'/>
+                                <RiDeleteBin6Line className='bg-custom-dpink group-hover:bg-custom-ddpink duration-300' />
                             </button>
                             <button
                                 className="px-2 py-1 group bg-custom-ddback text-white font-semibold rounded-md hover:bg-custom-dback transition-all duration-300"
