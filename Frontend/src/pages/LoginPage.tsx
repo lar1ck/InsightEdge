@@ -10,18 +10,25 @@ import { useState } from "react"
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error,setError] = useState("");
+  const [Loading,setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const { data } = await axios.post("http://localhost:3000/login", { email, password });
       localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       console.log('login successful');
+      setLoading(false);
       navigate('/');
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      setError("Invalid email or password");
+      setLoading(false);
     }
   }
 
@@ -83,11 +90,12 @@ const Login = () => {
                   <Link to="/signup">Don't have an account ?</Link>
                 </div>
               </div>
+              {error && <p className='font-semibold text-custom-dpink'>{error}</p>}
               <button
                 type="submit"
                 className="bg-black w-[250px] mt-5 text-white font-semibold rounded-lg text-center p-2 ml-12 active:bg-slate-800"
               >
-                Login
+                {Loading ? 'Loging in...' : ('Login') }
               </button>
             </form>
           </div>

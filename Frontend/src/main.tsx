@@ -16,6 +16,7 @@ import Orders from './contentDisplay/Orders.tsx'
 import ViewProduct from './pages/Orders/viewProduct.tsx'
 import NotFound from './pages/NotFound/NotFound.tsx'
 import Signup from './pages/Signup.tsx'
+import ProtectedRoute from './componets/ProtectedRoute.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -23,23 +24,28 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<App />} >
-          <Route path='/students' element={<Students />} />
-          <Route path='/teachers' element={<Teachers />} />
-          <Route index element={<Products />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/edit/:id" element={<EditProduct />} />
-          <Route path="/product/new" element={<CreateProduct />} />
-          <Route path="/users" element={<Users />} />
-          <Route path='/create/user' element={<CreateUser />} />
-          <Route path='/user/edit/:id' element={<EditUser />} />
-          <Route path='/order/new' element={<CreateOrders />} />
-          <Route path='/orders' element={<Orders />} />
-          <Route path='/order/:id' element={<ViewProduct />} />
-        </Route>
+        
         <Route path='*' element={<NotFound />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
+        
+        <Route element={<ProtectedRoute />}>
+          <Route path='/' element={<App />} >
+            <Route path='/students' element={<Students />} />
+            <Route path='/teachers' element={<Teachers />} />
+            <Route index element={<Products />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/edit/:id" element={<EditProduct />} />
+            <Route path="/product/new" element={<CreateProduct />} />
+            <Route path="/users" element={<Users />} />
+            <Route path='/create/user' element={<CreateUser />} />
+            <Route path='/user/edit/:id' element={<EditUser />} />
+            <Route path='/order/new' element={<CreateOrders />} />
+            <Route path='/orders' element={<Orders />} />
+            <Route path='/order/:id' element={<ViewProduct />} />
+          </Route>
+        </Route>
+
       </Routes>
     </BrowserRouter>
   </StrictMode>

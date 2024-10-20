@@ -1,34 +1,51 @@
 // import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { Link , useNavigate} from 'react-router-dom'
+import { useState  } from 'react'
 import './App.css'
 import Back from './componets/back'
 import { RiHomeLine } from "react-icons/ri";
 import { LuUsers } from "react-icons/lu";
-// import { PiShoppingCartSimple } from "react-icons/pi"; //chart icon
 import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
 import Tr_bg_logo from "./assets/IElogo/tr_bg_logo.png"
 import { FaListUl } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 
+// interface userProps{
+//   name: string,
+// }
 
 function App() {
   const [isProductOpen, setIsProductOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isOrderOpen, setIsOrdersOpen] = useState(false);
+  // const [user,setUser] = useState<userProps | null>(null);
+  
 
-  const toogleOpenProduct = () => {
-    setIsProductOpen(!isProductOpen);
-  }
-  const toogleOpenUser = () => {
-    setIsUserOpen(!isUserOpen);
-  }
-  const toogleOpenOrder = () => {
-    setIsOrdersOpen(!isOrderOpen);
-  }
+  const toogleOpenProduct = () => setIsProductOpen(!isProductOpen);
 
+  const toogleOpenUser = () => setIsUserOpen(!isUserOpen);
+
+  const toogleOpenOrder = () => setIsOrdersOpen(!isOrderOpen);
+
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem('user');
+  //   if(storedUser){
+  //     setUser(JSON.parse(storedUser));
+  //   }
+  // },[]);
+  
+  
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user'); 
+    navigate('/login');
+  }
+// if(!user){
+//   return <p>Loading...</p>
+// }
   return (
     <div className='flex '>
       <div className='h-screen w-[20%] border border-neutral-300 px-5 sticky'>
@@ -130,10 +147,10 @@ function App() {
              */}
           </nav>
           <div className='bottom-0 absolute my-2'>
-            <Link to="/login" className='items-center flex gap-2 py-2 px-3'>
+            <button onClick={handleLogOut} className='items-center flex gap-2 py-2 px-3'>
               <BiLogOut />
               Log Out
-            </Link>
+            </button>
           </div>
         </div>
       </div>
@@ -143,7 +160,7 @@ function App() {
       </div>
 
       <div className='h-screen w-[20%]'>
-
+              {/* <p>{user.name}</p> */}
       </div>
     </div >
   )

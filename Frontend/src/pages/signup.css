@@ -2,13 +2,24 @@
   background-image: url(../assets/blobs/blob1.svg),
     url(../assets/blobs/blob2.svg), url(../assets/blobs/blob3.svg),
     url(../assets/blobs/blob4.svg), url(../assets/blobs/blob5.svg);
-  background-size:  60% , 70% , 80% , 90% , 100%;
-  background-position: 50px , 100px , 150px , 200px , 300px;
+  background-size: 60%, 70%, 80%, 90%, 200%;
+  background-position: 50px, 100px, 150px, 200px, 300px;
   background-repeat: no-repeat;
- 
+  width: 100vw;
+  height: 100vh;
+  animation: moveBlobsInward 1.5s ease-out forwards;
 }
 
-  /* .blob {
+@keyframes moveBlobsInward {
+  0% {
+    background-position: 150px, 200px, 250px, 300px, 350px;
+  }
+  100% {
+    background-position: 50px, 72px, 84px, 96px, 108px;
+  }
+}
+
+/* .blob {
     background-image: url(../assets/blobs/blob1.svg),
       url(../assets/blobs/blob2.svg), url(../assets/blobs/blob3.svg),
       url(../assets/blobs/blob4.svg), url(../assets/blobs/blob5.svg);

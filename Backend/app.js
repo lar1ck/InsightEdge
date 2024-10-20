@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const PORT = process.env.PORT || 3000;
 const Orders = require("./models/ordersModel");
 const Products = require("./models/productModel");
@@ -84,102 +84,102 @@ app.delete("/product/:id", async (req, res) => {
     const productDel = await Products.findByIdAndDelete(id);
 
     if (!productDel) {
-     return res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({ message: "Product not found" });
     }
 
-    res.status(200).json({message: "Product deleted"});
+    res.status(200).json({ message: "Product deleted" });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
 //create a new user
-app.post('/user', async (req, res) => {
-  try{
+app.post("/user", async (req, res) => {
+  try {
     const user = await Users.create(req.body);
-    res.status(200).json(user); 
-  }catch (err) {
-    res.status(500).json({message: err.message});
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
 //get all users
-app.get('/users', async (req, res) => {
-  try{
+app.get("/users", async (req, res) => {
+  try {
     const allUsers = await Users.find();
-    res.status(200).json(allUsers)
-  }catch (err) {
-    res.status(500).json({message: err.message});
+    res.status(200).json(allUsers);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
 //get user by id
-app.get('/user/:id', async (req, res) => {
-  try{
-    const {id} = req.params;
+app.get("/user/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
     const result = await Users.findById(id);
 
-    if(!res){
-      res.status(404).json({message: 'User not found'});
+    if (!res) {
+      res.status(404).json({ message: "User not found" });
     }
 
-    res.status(200).json(result)
-  }catch(err){
-    res.status(500).json({message: err.message});
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-})
+});
 
-//delete user by id 
-app.delete('/user/:id', async (req, res) => {
-  try{  
-    const {id} = req.params;
+//delete user by id
+app.delete("/user/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
     const userDel = await Users.findByIdAndDelete(id);
 
-    if(!userDel){
-      return res.status(404).send({message: "User not found"});
-    };
-
-    res.status(200).send({message: "User deleted"});
-  }catch (err) {
-    res.status(500).json({message: err.message});
-  }
-})
-
-
-app.put('/user/:id', async (req, res) => {
-  try{
-    const {id} = req.params;
-    const {password, ...rest} = req.body;
-    const upUser = await Users.findByIdAndUpdate(id,rest,{new: true});
-
-    if(!upUser){
-      return res.status(404).json({message: 'User not found'});
+    if (!userDel) {
+      return res.status(404).send({ message: "User not found" });
     }
 
-    if(password){
+    res.status(200).send({ message: "User deleted" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+//update user
+app.put("/user/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { password, ...rest } = req.body;
+    const upUser = await Users.findByIdAndUpdate(id, rest, { new: true });
+
+    if (!upUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (password) {
       upUser.password = password;
       await upUser.save();
     }
 
     res.status(200).json(upUser);
-  }catch (err) {
-    res.status(500).json({message: err.message});
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
 //create an oeder
-app.post('/order', async (req, res) => {
-  try{
-    const {product_id,quantity} = req.body;
+app.post("/order", async (req, res) => {
+  try {
+    const { product_id, quantity } = req.body;
 
     const product = await Products.findById(product_id);
 
-    if(!product){
-      return res.status(404).json({message: "Product not found"})
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
     }
 
-    if(product.stock < quantity){
-      return res.status(400).json({message:"The quantity is not available"})
+    if (product.stock < quantity) {
+      return res.status(400).json({ message: "The quantity is not available" });
     }
 
     product.stock -= quantity;
@@ -187,53 +187,60 @@ app.post('/order', async (req, res) => {
 
     const order = await Orders.create(req.body);
     res.status(200).json(order);
-  }catch(err) {
-    res.status(500).json({message: err.message});
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
-//get all orders 
-app.get('/orders', async (req, res) => {
-  try{
+//get all orders
+app.get("/orders", async (req, res) => {
+  try {
     const orders = await Orders.find();
     res.status(200).json(orders);
-  }catch(err){
-    res.status(500).json({message: err.message});
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
 //get order by id
-app.get('/order/:id', async (req, res) => {
-  try{
-    const {id} = req.params;
+app.get("/order/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
     const order = await Orders.findById(id);
 
-    if(!order){
-      return res.status(404).json({message: 'Order not found'});
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
     }
 
     res.status(200).json(order);
-  }catch(err){
-    res.status(500).json({message: err.message});
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-})
+});
 
 //login
-app.post('/login', async (req, res) => {
-  try{
-    const { email,password } = req.body;
-    const user = await Users.findOne({email});
-    if(!user) return res.status(404).json({message: "No user found"});
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await Users.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
     const match = await bcrypt.compare(password, user.password);
-    if(!match) return res.status(404).json({message: "Invalid password"});
-    const token = jwt.sign({ userId : user._id}, 'yourSecretKey', {expiresIn : '1h'});
-    
-    res.status(200).json({message: "Login successful" , token});
-  }catch(err) {
-    res.status(500).json({message: err.message});
+    if (!match) {
+      return res.status(404).json({ message: "Password mismatch" });
+    }
+
+    const token = jwt.sign({ userId: user._id }, "Carr1ckL5soDB@005", {
+      expiresIn: "1h",
+    });
+    return res.status(200).json({ message: "Login successful", token, user });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
   }
-})
+});
 
 app.get("/start", (req, res) => {
   res.send("welcome to InsightEdge");
