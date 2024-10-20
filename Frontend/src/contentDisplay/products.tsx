@@ -46,7 +46,7 @@ const Products = () => {
             <div className='font-semibold mt-2  flex items-center justify-between'>
                 <h1 className='text-3xl'>Products' List</h1>
                 <div
-                    className='text-right py-1 text-white rounded-lg pr-4 pl-2 bg-custom-blue group hover:bg-custom-dblue duration-300 hover:scale-x-110'>
+                    className='text-right py-1 text-white rounded-lg pr-4 pl-2 bg-custom-blue group hover:bg-custom-dblue duration-300 '>
                     <Link to="/product/new" className='bg-custom-blue group group-hover:bg-custom-dblue duration-300 flex items-center'>
                         <IoMdAdd className='bg-custom-blue text-xl mx-1 group-hover:bg-custom-dblue duration-300' />
                         <span className='bg-custom-blue group group-hover:bg-custom-dblue duration-300 '> new</span>

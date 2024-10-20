@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
 const PORT = process.env.PORT || 3000;
 const Orders = require("./models/ordersModel");
 const Products = require("./models/productModel");
@@ -212,6 +214,23 @@ app.get('/order/:id', async (req, res) => {
 
     res.status(200).json(order);
   }catch(err){
+    res.status(500).json({message: err.message});
+  }
+})
+
+//login
+app.post('/login', async (req, res) => {
+  try{
+    const { email,password } = req.body;
+    const user = await Users.findOne({email});
+    if(!user) return res.status(404).json({message: "No user found"});
+
+    const match = await bcrypt.compare(password, user.password);
+    if(!match) return res.status(404).json({message: "Invalid password"});
+    const token = jwt.sign({ userId : user._id}, 'yourSecretKey', {expiresIn : '1h'});
+    
+    res.status(200).json({message: "Login successful" , token});
+  }catch(err) {
     res.status(500).json({message: err.message});
   }
 })

@@ -11,11 +11,13 @@ import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
 import Tr_bg_logo from "./assets/IElogo/tr_bg_logo.png"
 import { FaListUl } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
+
 
 function App() {
   const [isProductOpen, setIsProductOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
-  const [isOrderOpen,setIsOrdersOpen] = useState(false);
+  const [isOrderOpen, setIsOrdersOpen] = useState(false);
 
   const toogleOpenProduct = () => {
     setIsProductOpen(!isProductOpen);
@@ -31,12 +33,13 @@ function App() {
     <div className='flex '>
       <div className='h-screen w-[20%] border border-neutral-300 px-5 sticky'>
         <div className='flex items-center'>
-          <div className='h-[60px] w-[60px] rounded-full  mt-4 overflow-hidden '>
-            <img src={Tr_bg_logo} alt="" className='h-full w-full object-cover'/>
-          </div>
-          <p className='mt-3 font-semibold text-xl ml-1'><Link to="/">InsightEdge</Link> </p>
+          <Link to="/" className='flex items-center'>
+            <div className='h-[60px] w-[60px] rounded-full  mt-2 overflow-hidden '>
+              <img src={Tr_bg_logo} alt="" className='h-full w-full object-cover' />
+            </div>
+            <p className='mt-3 font-semibold text-xl ml-1'>InsightEdge</p>
+          </Link>
         </div>
-
         <div className='mt-2'>
           <nav className='h-auto flex flex-col font-semibold  '>
 
@@ -126,6 +129,12 @@ function App() {
             {/* 
              */}
           </nav>
+          <div className='bottom-0 absolute my-2'>
+            <Link to="/login" className='items-center flex gap-2 py-2 px-3'>
+              <BiLogOut />
+              Log Out
+            </Link>
+          </div>
         </div>
       </div>
       <div className='h-screen w-[60%] px-3 overflow-y-auto'>
@@ -136,7 +145,7 @@ function App() {
       <div className='h-screen w-[20%]'>
 
       </div>
-    </div>
+    </div >
   )
 }
 

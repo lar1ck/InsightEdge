@@ -1,0 +1,19 @@
+.blob {
+  background-image: url(../assets/blobs/blob1.svg),
+    url(../assets/blobs/blob2.svg), url(../assets/blobs/blob3.svg),
+    url(../assets/blobs/blob4.svg), url(../assets/blobs/blob5.svg);
+  background-size:  60% , 70% , 80% , 90% , 100%;
+  background-position: 50px , 100px , 150px , 200px , 300px;
+  background-repeat: no-repeat;
+ 
+}
+
+  /* .blob {
+    background-image: url(../assets/blobs/blob1.svg),
+      url(../assets/blobs/blob2.svg), url(../assets/blobs/blob3.svg),
+      url(../assets/blobs/blob4.svg), url(../assets/blobs/blob5.svg);
+    background-size: 30%, 40%, 50%, 40%, 30%;
+    background-position: 0px, 100px, 182px, 362px, 523px;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+  } */
