@@ -1,9 +1,9 @@
 // import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Link , useNavigate} from 'react-router-dom'
-import { useState  } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import './App.css'
-import Back from './componets/back'
+// import Back from './componets/back'
 import { RiHomeLine } from "react-icons/ri";
 import { LuUsers } from "react-icons/lu";
 import { FaCaretDown } from "react-icons/fa";
@@ -11,17 +11,21 @@ import { FaCaretUp } from "react-icons/fa";
 import Tr_bg_logo from "./assets/IElogo/tr_bg_logo.png"
 import { FaListUl } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
+import { TbSettings2 } from "react-icons/tb";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 
-// interface userProps{
-//   name: string,
-// }
+
+interface userProps {
+  name: string,
+}
 
 function App() {
   const [isProductOpen, setIsProductOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isOrderOpen, setIsOrdersOpen] = useState(false);
-  // const [user,setUser] = useState<userProps | null>(null);
-  
+  const [user, setUser] = useState<userProps | null>(null);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
 
   const toogleOpenProduct = () => setIsProductOpen(!isProductOpen);
 
@@ -29,26 +33,30 @@ function App() {
 
   const toogleOpenOrder = () => setIsOrdersOpen(!isOrderOpen);
 
-  // useEffect(() => {
-  //   const storedUser = localStorage.getItem('user');
-  //   if(storedUser){
-  //     setUser(JSON.parse(storedUser));
-  //   }
-  // },[]);
-  
-  
+  const toogleOpenProfile = () => setIsProfileOpen(!isProfileOpen);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+
   const navigate = useNavigate();
   const handleLogOut = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('user'); 
+    localStorage.removeItem('user');
     navigate('/login');
   }
-// if(!user){
-//   return <p>Loading...</p>
-// }
+  if (!user) {
+    return <p>Loading...</p>
+  }
+
+
   return (
-    <div className='flex '>
-      <div className='h-screen w-[20%] border border-neutral-300 px-5 sticky'>
+    <div className='flex bg-slate-50'>
+      <div className='h-screen w-[20%] border border-neutral-300 px-5 overflow-y-auto'>
         <div className='flex items-center'>
           <Link to="/" className='flex items-center'>
             <div className='h-[60px] w-[60px] rounded-full  mt-2 overflow-hidden '>
@@ -58,8 +66,22 @@ function App() {
           </Link>
         </div>
         <div className='mt-2'>
-          <nav className='h-auto flex flex-col font-semibold  '>
+          <nav className='h-auto flex flex-col font-semibold '>
 
+            <Link
+              // onClick={toogleOpenUser}
+              to='/dashboard'
+              className='p-2 rounded-md my-1 group transition duration-300 hover:bg-custom-dback flex items-center justify-between w-full text-left'
+            >
+              <div className='flex items-center group-hover:bg-custom-dback duration-300'>
+                <RiHomeLine className='mr-2 group-hover:bg-custom-dback duration-300' />
+                <span className='group-hover:bg-custom-dback duration-300'>
+                  Home
+                </span>
+              </div>
+            </Link>
+
+            <span className='text-neutral-500'>Tools</span>
             <button
               onClick={toogleOpenUser}
               className='p-2 rounded-md my-1 group transition duration-300 hover:bg-custom-dback flex items-center justify-between w-full text-left'
@@ -76,6 +98,7 @@ function App() {
                 )}
               </div>
             </button>
+            
 
             {isUserOpen && (
               <div className=' rounded-xl p-1'>
@@ -142,25 +165,56 @@ function App() {
                 </Link>
               </div>
             )}
-
-            {/* 
-             */}
           </nav>
-          <div className='bottom-0 absolute my-2'>
-            <button onClick={handleLogOut} className='items-center flex gap-2 py-2 px-3'>
-              <BiLogOut />
-              Log Out
-            </button>
-          </div>
         </div>
       </div>
-      <div className='h-screen w-[60%] px-3 overflow-y-auto'>
-        <p className="text-2xl mt-2"><Back /></p>
+      <div className='h-screen w-[60%] px-3 overflow-y-auto rounded-r-2xl   '>
+        <p className="text-2xl mt-2">
+          {/* <Back /> */}
+        </p>
         <Outlet />
       </div>
 
-      <div className='h-screen w-[20%]'>
-              {/* <p>{user.name}</p> */}
+      <div className='ml-2 h-screen w-[20%] pt-2 px-3 rounded-l-2xl '>
+        <div className=' mt-3'>
+          <div className='py-1 px-4 rounded-full shadow-sm border-2 font-semibold flex items-center justify-between'>
+            <div className='flex gap-2 items-center '>
+              <div className='w-[20px] h-[20px] rounded-full bg-slate-400'></div>
+              <div>{user.name}</div>
+            </div>
+            <div className='items-center'>
+              <button onClick={toogleOpenProfile}>
+                {isProfileOpen ? (
+                  <div>
+                    <FaCaretUp />
+                  </div>
+                ) : (
+                  <div>
+                    <FaCaretDown />
+                  </div>
+                )}
+
+              </button>
+            </div>
+          </div>
+          {isProfileOpen && (
+            <div className='w-[150px]  bg-slate-50 flex flex-col mt-1 font-semibold'>
+              <Link to='/settings' className='border-b p-1 px-3 bg-slate-50 border-zinc-500 flex items-center gap-2'>
+                <TbSettings2 />
+                Settings
+              </Link>
+              <Link to='/Profile' className='border-b p-1 px-3 bg-slate-50 border-zinc-500 flex items-center gap-2'>
+                <HiOutlineUserCircle />
+                Profile
+              </Link>
+              <button onClick={handleLogOut} className=' p-1 px-3 group bg-slate-50 hover:bg-red-700 duration-300 hover:text-white items-center flex gap-2'>
+                <BiLogOut className='bg-slate-50 group-hover:bg-red-700 duration-300 group-hover:text-white' />
+                Log Out
+              </button>
+            </div>
+          )}
+          
+        </div>
       </div>
     </div >
   )

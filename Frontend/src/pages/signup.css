@@ -1,4 +1,4 @@
-.blob {
+ .blob {
   background-image: url(../assets/blobs/blob1.svg),
     url(../assets/blobs/blob2.svg), url(../assets/blobs/blob3.svg),
     url(../assets/blobs/blob4.svg), url(../assets/blobs/blob5.svg);
@@ -17,7 +17,7 @@
   100% {
     background-position: 50px, 72px, 84px, 96px, 108px;
   }
-}
+} 
 
 /* .blob {
     background-image: url(../assets/blobs/blob1.svg),

@@ -58,6 +58,7 @@ const CreateProduct = () => {
                 value={formData.name}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
             <div className='w-full'>
@@ -68,6 +69,7 @@ const CreateProduct = () => {
                 value={formData.description}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
           </div>
@@ -80,6 +82,7 @@ const CreateProduct = () => {
                 value={formData.category}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
             <div className='w-[40%]'>
@@ -90,6 +93,7 @@ const CreateProduct = () => {
                 value={formData.price}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
           </div>
@@ -102,6 +106,7 @@ const CreateProduct = () => {
                 value={formData.currency}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
             <div className='w-[30%]'>
@@ -112,6 +117,7 @@ const CreateProduct = () => {
                 value={formData.stock}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
           </div>
@@ -124,16 +130,18 @@ const CreateProduct = () => {
                 value={formData.brand}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
             <div className='w-[80%]'>
-              <label className="block text-sm font-medium text-gray-700">Image</label>
+              <label className="block text-sm font-medium text-gray-700">Image URL</label>
               <input
                 type="text"
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                required
               />
             </div>
 

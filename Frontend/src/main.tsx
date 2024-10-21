@@ -17,6 +17,7 @@ import ViewProduct from './pages/Orders/viewProduct.tsx'
 import NotFound from './pages/NotFound/NotFound.tsx'
 import Signup from './pages/Signup.tsx'
 import ProtectedRoute from './componets/ProtectedRoute.tsx'
+import Dashboard from './pages/dashboard/dashboard.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -24,16 +25,16 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        
+
         <Route path='*' element={<NotFound />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        
+
         <Route element={<ProtectedRoute />}>
           <Route path='/' element={<App />} >
             <Route path='/students' element={<Students />} />
             <Route path='/teachers' element={<Teachers />} />
-            <Route index element={<Products />} />
+            <Route index element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/edit/:id" element={<EditProduct />} />
             <Route path="/product/new" element={<CreateProduct />} />
@@ -43,6 +44,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/order/new' element={<CreateOrders />} />
             <Route path='/orders' element={<Orders />} />
             <Route path='/order/:id' element={<ViewProduct />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Route>
         </Route>
 

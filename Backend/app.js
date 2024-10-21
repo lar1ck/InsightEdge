@@ -218,6 +218,8 @@ app.get("/order/:id", async (req, res) => {
   }
 });
 
+const SECRET_KEY = "Carr1ckL5soDB@005";
+
 //login
 app.post("/login", async (req, res) => {
   try {
@@ -233,7 +235,7 @@ app.post("/login", async (req, res) => {
       return res.status(404).json({ message: "Password mismatch" });
     }
 
-    const token = jwt.sign({ userId: user._id }, "Carr1ckL5soDB@005", {
+    const token = jwt.sign({ userId: user._id }, SECRET_KEY, {
       expiresIn: "1h",
     });
     return res.status(200).json({ message: "Login successful", token, user });
@@ -241,6 +243,26 @@ app.post("/login", async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 });
+
+const verifyToken = (req, res, next) => {
+  const token = req.header['authorization'];
+
+  if(!token) {
+    res.status(403).json({message:"No token provided"});
+  }
+
+  jwt.verify('token', SECRET_KEY, (err,decoded) => {
+    if(!err){
+      res.status(401).json({message: "Invalid token"});
+    };
+    req.userId = decoded.userId;
+    next();
+  })
+};
+
+app.post('/verifyToken', verifyToken , (req, res) => {
+  res.status(200).json({message:"Token valid" , userId: req.userId });
+})
 
 app.get("/start", (req, res) => {
   res.send("welcome to InsightEdge");
