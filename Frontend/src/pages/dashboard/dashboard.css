@@ -1,25 +1,25 @@
 .user-prf{
-    background-image: url(../../assets/ml.jpg);
-    background-size: cover;
+    background-image: url(../../assets/prf.png);
+    background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
 .img-prf1{
     background-image: url(../../assets/ch.jpg);
-    background-size: cover;
-    background-size: 100%;
+    background-position: center;
+    background-size: 126%;
     background-repeat: no-repeat;
 }
 .img-prf2{
     background-image: url(../../assets/fm.jpg);
-    background-size: cover;
-    background-size: 100%;
+    background-position: center;
+    background-size: 126%;
     background-repeat: no-repeat;
 }
 .img-prf3{
-    background-image: url(../../assets/prf.png);
-    background-size: cover;
-    background-size: 100%;
+    background-image: url(../../assets/ml.jpg);
+    background-position: center;
+    background-size: 126%;
     background-repeat: no-repeat;
 }

@@ -235,9 +235,8 @@ app.post("/login", async (req, res) => {
       return res.status(404).json({ message: "Password mismatch" });
     }
 
-    const token = jwt.sign({ userId: user._id }, SECRET_KEY, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ userId: user._id }, SECRET_KEY, { expiresIn: '7h' });
+
     return res.status(200).json({ message: "Login successful", token, user });
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -245,24 +244,45 @@ app.post("/login", async (req, res) => {
 });
 
 const verifyToken = (req, res, next) => {
-  const token = req.header['authorization'];
+  const token = req.headers["authorization"];
 
-  if(!token) {
-    res.status(403).json({message:"No token provided"});
+  if (!token) {
+    return res.status(403).json({ message: "No token available" });
   }
 
-  jwt.verify('token', SECRET_KEY, (err,decoded) => {
-    if(!err){
-      res.status(401).json({message: "Invalid token"});
-    };
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "Invalid token" });
+    }
+
     req.userId = decoded.userId;
     next();
-  })
+  });
 };
 
-app.post('/verifyToken', verifyToken , (req, res) => {
-  res.status(200).json({message:"Token valid" , userId: req.userId });
-})
+app.post("/verifyToken", verifyToken , (req, res) => {
+  res.status(200).json({ message: "Token valid", userId: req.userId });
+});
+
+// const verifyToken = (req, res, next) => {
+//   const token = req.header['authorization'];
+
+//   if(!token) {
+//     res.status(403).json({message:"No token provided"});
+//   }
+
+//   jwt.verify('token', SECRET_KEY, (err,decoded) => {
+//     if(!err){
+//       res.status(401).json({message: "Invalid token"});
+//     };
+//     req.userId = decoded.userId;
+//     next();
+//   })
+// };
+
+// app.post('/verifyToken', verifyToken , (req, res) => {
+//   res.status(200).json({message:"Token valid" , userId: req.userId });
+// })
 
 app.get("/start", (req, res) => {
   res.send("welcome to InsightEdge");

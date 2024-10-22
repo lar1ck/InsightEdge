@@ -50,7 +50,9 @@ function App() {
     navigate('/login');
   }
   if (!user) {
-    return <p>Loading...</p>
+    return <div className="">
+      Loading...
+    </div>
   }
 
 
@@ -98,7 +100,7 @@ function App() {
                 )}
               </div>
             </button>
-            
+
 
             {isUserOpen && (
               <div className=' rounded-xl p-1'>
@@ -207,13 +209,13 @@ function App() {
                 <HiOutlineUserCircle />
                 Profile
               </Link>
-              <button onClick={handleLogOut} className=' p-1 px-3 group bg-slate-50 hover:bg-red-700 duration-300 hover:text-white items-center flex gap-2'>
-                <BiLogOut className='bg-slate-50 group-hover:bg-red-700 duration-300 group-hover:text-white' />
+              <button onClick={handleLogOut} className=' p-1 px-3 group bg-slate-50 hover:bg-red-700 duration-100 hover:text-white items-center flex gap-2'>
+                <BiLogOut className='bg-slate-50 group-hover:bg-red-700 duration-100 group-hover:text-white' />
                 Log Out
               </button>
             </div>
           )}
-          
+
         </div>
       </div>
     </div >

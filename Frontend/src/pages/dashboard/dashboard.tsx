@@ -9,7 +9,7 @@ const Dashboard = () => {
       <div className='flex items-center justify-between'>
         <div className='flex p-2 items-center gap-x-3'>
           <div className='size-20 user-prf rounded-full'>
-            
+
           </div>
           <div>
             <h1 className='font-semibold text-2xl '>
@@ -32,7 +32,7 @@ const Dashboard = () => {
           </div>
           <div className='bg-[var(--parent-bg)]'>
             <p className='bg-[var(--parent-bg)]'>Monthly revenue</p>
-            <p className='bg-[var(--parent-bg)]'>$3,500 <span className='ml-3 bg-white text-blue-950 rounded-full p-1 text-sm'>+2.4%</span></p>
+            <p className='bg-[var(--parent-bg)] text-xl text-white font-bold'>$3,500 <span className='ml-3 font-semibold bg-white text-blue-950 rounded-full p-1 text-sm'>+2.4%</span></p>
             <p className='bg-[var(--parent-bg)]'>Previous month <span className='bg-[var(--parent-bg)] text-white font-bold'>$1.7k</span></p>
           </div>
         </div>
@@ -42,8 +42,8 @@ const Dashboard = () => {
           </div>
           <div className='bg-[var(--parent-bg)]'>
             <p className='bg-[var(--parent-bg)]'>Monthly Sales</p>
-            <p className='bg-[var(--parent-bg)]'>$6,750 <span className='ml-3 bg-white text-blue-950 rounded-full p-1 text-sm'>+2.4%</span></p>
-            <p className='bg-[var(--parent-bg)]'>Previous month <span className='bg-[var(--parent-bg)] text-white font-bold'>$3.1k</span></p>
+            <p className='bg-[var(--parent-bg)] text-xl text-white font-bold'>$6,750 <span className='ml-3 font-semibold bg-white text-blue-950 rounded-full p-1 text-sm'>+1.4%</span></p>
+            <p className='bg-[var(--parent-bg)] '>Previous month <span className='bg-[var(--parent-bg)] text-white font-bold'>$3.1k</span></p>
           </div>
         </div>
         <div className='w-[33%] bg-[var(--parent-bg)] flex gap-x-4 items-center font-semibold'>
@@ -52,7 +52,7 @@ const Dashboard = () => {
           </div>
           <div className='bg-[var(--parent-bg)]'>
             <p className='bg-[var(--parent-bg)]'>Total Profit</p>
-            <p className='bg-[var(--parent-bg)]'>$10,900 <span className='ml-3 bg-white text-blue-950 rounded-full p-1 text-sm'>+2.4%</span></p>
+            <p className='bg-[var(--parent-bg)] text-xl text-white font-bold'>$10,900 <span className='ml-3 font-semibold bg-white text-blue-950 rounded-full p-1 text-sm'>+4.3%</span></p>
             <p className='bg-[var(--parent-bg)]'>Previous year <span className='bg-[var(--parent-bg)] text-white font-bold'>$8.9k</span></p>
           </div>
         </div>
