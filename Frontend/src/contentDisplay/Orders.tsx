@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
@@ -21,6 +21,13 @@ const Orders = () => {
         getAllOrders();
     }, [])
 
+    const handleDelete = async (id:string) => {
+        const delOrder = await axios.delete(`http://localhost:3000/order/${id}`);
+        setOrders(orders.filter(orders => orders._id != id));
+        console.log(delOrder);
+
+    }
+
     return (
         <div>
             <h1 className='text-3xl font-semibold my-3'> Orders</h1>
@@ -40,6 +47,9 @@ const Orders = () => {
                         <div>
                             <span className='font-semibold'> Placed at </span>: {new Date(order.createdAt).toLocaleDateString()} {new Date(order.createdAt).toLocaleTimeString()}
                         </div>
+                        <button onClick={() => handleDelete(order._id)} className='py-1 px-4 bg-custom-dpink text-white font-semibold rounded-xl mx-1'>
+                            Delete
+                        </button>
                         <button className='mt-3 font-semibold'>
                                 <Link to={`/order/${order.product_id}`} className='py-1 px-4 bg-custom-dback rounded-lg'>
                                     View product

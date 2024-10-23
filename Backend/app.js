@@ -218,6 +218,25 @@ app.get("/order/:id", async (req, res) => {
   }
 });
 
+//delete an order
+app.delete("/order/:id", async (req, res) => {
+  const { id } = req.params;
+  const order = await Orders.findById(id);
+
+  if (!order) {
+    return res.status(404).json({ message: "No order found" });
+  }
+
+  const product = await Products.findById(order.product_id);
+  if (product) {
+    product.quantity += order.quantity;
+    await product.save();
+  }
+
+  const delOrder = await Orders.findByIdAndDelete(id);
+  res.status(200).json({ message: "Order deleted" });
+});
+
 const SECRET_KEY = "Carr1ckL5soDB@005";
 
 //login
@@ -232,10 +251,12 @@ app.post("/login", async (req, res) => {
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return res.status(404).json({ message: "Password mismatch" });
+      return res.status(404).json({ message: "Password incorrect" });
     }
 
-    const token = jwt.sign({ userId: user._id }, SECRET_KEY, { expiresIn: '7h' });
+    const token = jwt.sign({ userId: user._id }, SECRET_KEY, {
+      expiresIn: "1h",
+    });
 
     return res.status(200).json({ message: "Login successful", token, user });
   } catch (err) {
@@ -260,29 +281,9 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-app.post("/verifyToken", verifyToken , (req, res) => {
+app.post("/verifyToken", verifyToken, (req, res) => {
   res.status(200).json({ message: "Token valid", userId: req.userId });
 });
-
-// const verifyToken = (req, res, next) => {
-//   const token = req.header['authorization'];
-
-//   if(!token) {
-//     res.status(403).json({message:"No token provided"});
-//   }
-
-//   jwt.verify('token', SECRET_KEY, (err,decoded) => {
-//     if(!err){
-//       res.status(401).json({message: "Invalid token"});
-//     };
-//     req.userId = decoded.userId;
-//     next();
-//   })
-// };
-
-// app.post('/verifyToken', verifyToken , (req, res) => {
-//   res.status(200).json({message:"Token valid" , userId: req.userId });
-// })
 
 app.get("/start", (req, res) => {
   res.send("welcome to InsightEdge");

@@ -29,7 +29,7 @@ const CreateOrders = () => {
                 quantity: 0,
                 price: 0,
             });
-            navigate('/products')
+            navigate('/orders')
 
         } catch (err) {
             console.error(err);
@@ -40,26 +40,28 @@ const CreateOrders = () => {
             <h1 className='text-3xl font-semibold my-4'> CreateOrders</h1>
             <form onSubmit={handleSubmit}>
                 <div className='flex w-full'>
-                <div className='w-full'>
-                    <label htmlFor="product_id">Product_id</label> <br />
-                    <input type="text"
-                        name='product_id'
-                        value={formData.product_id}
-                        onChange={handleChange}
-                        placeholder='45724b6fg576607jfec3f552'
-                        className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
-                    /> 
-                </div>
-                <div className='w-[40%]'>
-                    <label htmlFor="Quantity">Quantity</label> <br />
-                    <input type="text"
-                        name='quantity'
-                        value={formData.quantity}
-                        onChange={handleChange}
-                        placeholder='000'
-                        className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
-                    /> 
-                </div>
+                    <div className='w-full'>
+                        <label htmlFor="product_id">Product_id</label> <br />
+                        <input type="text"
+                            name='product_id'
+                            value={formData.product_id}
+                            onChange={handleChange}
+                            placeholder='45724b6fg576607jfec3f552'
+                            className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                            required
+                        />
+                    </div>
+                    <div className='w-[40%]'>
+                        <label htmlFor="Quantity">Quantity</label> <br />
+                        <input type="text"
+                            name='quantity'
+                            value={formData.quantity}
+                            onChange={handleChange}
+                            placeholder='000'
+                            className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
+                            required
+                        />
+                    </div>
                 </div>
                 <div>
                     <label htmlFor="Price">Price</label> <br />
@@ -69,10 +71,16 @@ const CreateOrders = () => {
                         onChange={handleChange}
                         placeholder='000'
                         className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
-                    /> 
+                        required
+                    />
                 </div>
-                <button type='submit'>Submit</button>
+                <button type='submit' className='px-4 py-1 bg-custom-dblue text-white rounded-lg font-semibold my-1'>
+                    Submit
+                </button>
             </form>
+
+
+
         </div>
     )
 }
