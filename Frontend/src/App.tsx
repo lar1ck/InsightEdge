@@ -178,11 +178,11 @@ function App() {
       </div>
 
       <div className='ml-2 h-screen w-[20%] pt-2 px-3 rounded-l-2xl '>
-        <div className=' mt-3'>
+        <div className=' mt-3 flex justify-end'>
           <div className='py-1 px-4 rounded-full shadow-sm border-2 font-semibold flex items-center justify-between w-fit gap-x-2'>
-            <div className='flex gap-2 items-center'>
+            <div className='flex gap-2 items-center '>
               <div className='w-[20px] h-[20px] rounded-full bg-slate-400'></div>
-              <div>{user.name}</div>
+              <div className=''>{user.name}</div>
             </div>
             <div>
               <button onClick={toogleOpenProfile} className='items-center flex'>
@@ -199,6 +199,8 @@ function App() {
               </button>
             </div>
           </div>
+
+        </div>
           {isProfileOpen && (
             <div className='w-[150px]  bg-slate-50 flex flex-col mt-1 font-semibold'>
               <Link to='/settings' className='border-b p-1 px-3 bg-slate-50 border-zinc-500 flex items-center gap-2'>
@@ -215,8 +217,6 @@ function App() {
               </button>
             </div>
           )}
-
-        </div>
       </div>
     </div >
   )

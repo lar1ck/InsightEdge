@@ -22,10 +22,12 @@ const Orders = () => {
     }, [])
 
     const handleDelete = async (id:string) => {
-        const delOrder = await axios.delete(`http://localhost:3000/order/${id}`);
-        setOrders(orders.filter(orders => orders._id != id));
-        console.log(delOrder);
-
+        const confirmDel = window.confirm('Are you sure you want to delete');
+        if(confirmDel){
+            const delOrder = await axios.delete(`http://localhost:3000/order/${id}`);
+            setOrders(orders.filter(orders => orders._id != id));
+            console.log(delOrder);
+        }
     }
 
     return (

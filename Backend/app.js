@@ -281,6 +281,36 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+//calculate Total sales
+app.get('/totalSales', async (req, res) => {
+  try{
+    const totalSales = await Orders.aggregate([
+      {
+        $group: {
+          _id:null,
+          totalAmount : { $sum : "$price"},
+        }
+      }
+    ]);
+
+    const total = totalSales.length > 0 ? totalSales[0].totalAmount : 0 ;
+
+    res.status(200).json(total);
+  }catch(err){
+    res.status(500).json({message: err.message});
+  }
+});
+
+//get number of orders
+app.get('/ordersAmount' , async (req, res) => {
+  try{
+    const orders = await Orders.countDocuments();
+    res.status(200).json(orders);
+  }catch(err){
+    res.status(500).json({message: err.message});
+  }
+})
+
 app.post("/verifyToken", verifyToken, (req, res) => {
   res.status(200).json({ message: "Token valid", userId: req.userId });
 });

@@ -52,7 +52,7 @@ const ViewProduct = () => {
                                     <span className="font-semibold ">Description:</span> {product.description}
                                 </p>
                                 <p className="text-gray-700 mb-1">
-                                    <span className="font-semibold">Price:</span> {product.price} {product.currency}
+                                    <span className="font-semibold">Price:</span> {product.currency} {product.price} 
                                 </p>
                                 <p className="text-gray-700 mb-1">
                                     <span className="font-semibold">Category:</span> {product.category}
