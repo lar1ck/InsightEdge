@@ -41,6 +41,9 @@ const Products = () => {
         }
     }
 
+    const formatNumber = (name: number): string => {
+        return name.toLocaleString('en-US');
+    }
     return (
         <div className=''>
             <div className='font-semibold mt-2  flex items-center justify-between'>
@@ -66,7 +69,7 @@ const Products = () => {
                                     <span className="font-semibold ">Description:</span> {product.description}
                                 </p>
                                 <p className="text-gray-700 mb-1">
-                                    <span className="font-semibold">Price:</span> {product.price} {product.currency}
+                                    <span className="font-semibold">Price:</span> {formatNumber(product.price)} {product.currency}
                                 </p>
                                 <p className="text-gray-700 mb-1">
                                     <span className="font-semibold">Category:</span> {product.category}

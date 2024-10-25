@@ -84,7 +84,6 @@ const CreateOrders = () => {
                         placeholder=''
                         className="mt-1 cursor-not-allowed block w-full border border-gray-300 bg-gray-300 outline-none rounded-md p-2 "
                         disabled
-
                     />
                 </div>
                 <button type='submit' className='px-4 py-1 bg-custom-dblue text-white rounded-lg font-semibold my-1'>
