@@ -6,6 +6,7 @@ interface orderProps {
     _id: string,
     product_id: string,
     quantity: number,
+    user_id: string,
     price: number,
     createdAt: string,
 }
@@ -42,6 +43,9 @@ const Orders = () => {
                         </div>
                         <div>
                             <span className='font-semibold'> Quantity </span>: {order.quantity}
+                        </div>
+                        <div>
+                            <span className='font-semibold'> User </span>: {order.user_id}
                         </div>
                         <div>
                             <span className='font-semibold'> Price </span>: {order.price}

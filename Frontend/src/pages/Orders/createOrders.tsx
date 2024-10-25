@@ -3,11 +3,13 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
 const CreateOrders = () => {
-
+    const user = JSON.parse(localStorage.getItem('user') || "{}");
+    const user_id = user._id || "";
     const [formData, setFormData] = useState({
         product_id: "",
         quantity: 0,
         price: 0,
+        user_id:user_id,
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -28,6 +30,7 @@ const CreateOrders = () => {
                 product_id: "",
                 quantity: 0,
                 price: 0,
+                user_id:"",
             });
             navigate('/orders')
 
@@ -72,6 +75,16 @@ const CreateOrders = () => {
                         placeholder='000'
                         className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
                         required
+                    />
+                    <label htmlFor="Price">User</label> <br />
+                    <input type="text"
+                        name='user_id'
+                        value={formData.user_id}
+                        onChange={handleChange}
+                        placeholder=''
+                        className="mt-1 cursor-not-allowed block w-full border border-gray-300 bg-gray-300 outline-none rounded-md p-2 "
+                        disabled
+
                     />
                 </div>
                 <button type='submit' className='px-4 py-1 bg-custom-dblue text-white rounded-lg font-semibold my-1'>

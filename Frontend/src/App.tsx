@@ -170,14 +170,12 @@ function App() {
           </nav>
         </div>
       </div>
-      <div className='h-screen w-[60%] px-3 overflow-y-auto rounded-r-2xl   '>
-        <p className="text-2xl mt-2">
-          {/* <Back /> */}
-        </p>
+      <div className='h-screen w-[60%] px-3 overflow-y-auto rounded-r-2xl'>
+        <div className='mt-2'></div>
         <Outlet />
       </div>
 
-      <div className='ml-2 h-screen w-[20%] pt-2 px-3 rounded-l-2xl '>
+      <div className='ml- h-screen w-[20%] pt-2 px-3 ml-2 rounded-l-2xl'>
         <div className=' mt-3 flex justify-end'>
           <div className='py-1 px-4 rounded-full shadow-sm border-2 font-semibold flex items-center justify-between w-fit gap-x-2'>
             <div className='flex gap-2 items-center '>
@@ -204,11 +202,11 @@ function App() {
           {isProfileOpen && (
             <div className='w-[150px]  bg-slate-50 flex flex-col mt-1 font-semibold'>
               <Link to='/settings' className='border-b p-1 px-3 bg-slate-50 border-zinc-500 flex items-center gap-2'>
-                <TbSettings2 />
+                <TbSettings2 className='bg-[var(--parent-bg)]'/>
                 Settings
               </Link>
               <Link to='/Profile' className='border-b p-1 px-3 bg-slate-50 border-zinc-500 flex items-center gap-2'>
-                <HiOutlineUserCircle />
+                <HiOutlineUserCircle className='bg-[var(--parent-bg)]'/>
                 Profile
               </Link>
               <button onClick={handleLogOut} className=' p-1 px-3 group bg-slate-50 hover:bg-red-700 duration-100 hover:text-white items-center flex gap-2'>

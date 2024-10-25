@@ -229,7 +229,7 @@ app.delete("/order/:id", async (req, res) => {
 
   const product = await Products.findById(order.product_id);
   if (product) {
-    product.quantity += order.quantity;
+    product.stock += order.quantity;
     await product.save();
   }
 
