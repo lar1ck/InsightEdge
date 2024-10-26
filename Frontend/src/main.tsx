@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound/NotFound.tsx'
 import Signup from './pages/Signup.tsx'
 import ProtectedRoute from './componets/ProtectedRoute.tsx'
 import Dashboard from './pages/dashboard/dashboard.tsx'
+import Profile from './pages/Profile/Profile.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -45,6 +46,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/orders' element={<Orders />} />
             <Route path='/order/:id' element={<ViewProduct />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/profile' element={<Profile />} />
           </Route>
         </Route>
 

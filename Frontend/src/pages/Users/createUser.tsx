@@ -7,6 +7,7 @@ interface userProps {
     age: number,
     email: string,
     password: string,
+    image: string
 }
 
 const CreateUser = () => {
@@ -15,6 +16,7 @@ const CreateUser = () => {
         age: 0,
         email: "",
         password: "",
+        image: "",
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
@@ -23,6 +25,18 @@ const CreateUser = () => {
             [e.target.name]: e.target.value,
         })
     };
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const baseString = reader.result as string;
+                setFormData((prev) => ({ ...prev, image: baseString }));
+            }
+            reader.readAsDataURL(file);
+        }
+    }
 
     const navigate = useNavigate();
 
@@ -34,6 +48,7 @@ const CreateUser = () => {
             age: 0,
             email: "",
             password: "",
+            image: "",
         });
         console.log("new user created", newUser);
         navigate('/users');
@@ -85,6 +100,15 @@ const CreateUser = () => {
                         value={formData.password}
                         onChange={handleChange}
                         placeholder='Password'
+                        className='mt-1 block w-full border border-gray-300 outline-none rounded-md p-2'
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="">Password</label>
+                    <input type="file"
+                        name='image'
+                        onChange={handleImageChange}
                         className='mt-1 block w-full border border-gray-300 outline-none rounded-md p-2'
                         required
                     />

@@ -11,7 +11,7 @@ const Products = require("./models/productModel");
 const Users = require("./models/usersModel");
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({limit: '10mb'}));
 
 const mogooseURI = "mongodb://localhost:27017/InsightEdge";
 const connectdb = async () => {

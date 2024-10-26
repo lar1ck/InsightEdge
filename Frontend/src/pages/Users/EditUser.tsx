@@ -7,6 +7,7 @@ interface userProps {
     email: string;
     age: number;
     password: string;
+    image: string;
 }
 
 const EditUser = () => {
@@ -46,6 +47,18 @@ const EditUser = () => {
 
     const navigate = useNavigate();
 
+    const handleImageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if(file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const basicString = reader.result as string;
+                setFormData((prev) => ({...prev, image:basicString}));
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         try {
             const confirmUpdate = window.confirm("are you sure ou want to update this user?");
@@ -53,7 +66,7 @@ const EditUser = () => {
                 e.preventDefault();
                 await axios.put(`http://localhost:3000/user/${id}`, formData);
                 navigate('/users');
-            }else{
+            } else {
                 navigate("/users");
             }
         } catch (err) {
@@ -105,6 +118,14 @@ const EditUser = () => {
                             value={formData.password}
                             onChange={handleChange}
                             placeholder='Password'
+                            className='mt-1 block  border border-gray-300 outline-none rounded-md p-2 '
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="">Password</label>
+                        <input type="file"
+                            name='image'
+                            onChange={handleImageChange}
                             className='mt-1 block  border border-gray-300 outline-none rounded-md p-2 '
                         />
                     </div>

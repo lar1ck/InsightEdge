@@ -15,11 +15,12 @@ interface orderProps {
 }
 
 interface userNameMap {
-  name: string,
+  [key: string]: string;
 }
 
-interface userNameMap {
-  [key: string]: string;
+interface userDetailsProps {
+  name: string,
+  image: string,
 }
 
 const Dashboard = () => {
@@ -27,6 +28,7 @@ const Dashboard = () => {
   const [totalSales, setTotalSales] = useState(0);
   const [ordersAmount, setOrdersAmount] = useState(0);
   const [userNames, setUserNames] = useState<userNameMap>({} as userNameMap);
+  const [userDet, setUserDet] = useState<userDetailsProps | null>()
 
   useEffect(() => {
     const getOrders = async () => {
@@ -77,11 +79,31 @@ const Dashboard = () => {
         console.error(err);
       }
     }
-    if (orders.length) getUserNames();
-  });
+    if (orders.length > 0) {
+      getUserNames()
+    };
+  },[orders]);
+
+  useEffect(() => {
+    const getUserDet = () => {
+      try {
+        const response = localStorage.getItem('user');
+        if (response) {
+          setUserDet(JSON.parse(response))
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    getUserDet();
+  }, [])
 
   const formatNumber = (num: number): string => {
     return num.toLocaleString('en-US');
+  }
+
+  if (!userDet) {
+    return <div>loading...</div>
   }
 
   return (
@@ -89,8 +111,10 @@ const Dashboard = () => {
       {/* div 1  */}
       <div className='flex items-center justify-between'>
         <div className='flex p-2 items-center gap-x-3'>
-          <div className='size-20 user-prf rounded-full'>
-
+          <div className='size-20 bg-custom-dback rounded-full'>
+            {userDet.image && (
+              <img src={userDet.image} className='rounded-full' alt="your profile" />
+            )}
           </div>
           <div>
             <h1 className='font-semibold text-2xl '>
@@ -168,20 +192,26 @@ const Dashboard = () => {
               Looks like you're new, get some orders to get your insight
             </div>
           ) : (
-            orders.map((order) => (
-              <div key={order._id} className='border-2 my-3 p-3 '>
-                <div className='mb-2'>
-                <span className='font-semibold'> UserId</span>: {order.user_id} <br />
-                <span className='font-semibold'> User name </span>: {userNames[order.user_id] || 'loading...'} <br />
-                <span className='font-semibold'> OrderId </span>: {order._id} <br />
-                  <span className='font-semibold'> ProductId </span> : {order.product_id} <br />
-                  <span className='font-semibold'> Quantity </span>: {order.quantity} <br />
-                  <span className='font-semibold'> Price </span>: {formatNumber(order.price)} RWF<br />
-                  <span className='font-semibold'> Placed on </span>: {new Date(order.createdAt).toLocaleDateString()} : {new Date(order.createdAt).toLocaleTimeString()} <br />
+            <>
+              {orders.slice(0, 2).map((order) => (
+                <div key={order._id} className='border-2 my-3 p-3 '>
+                  <div className='mb-2'>
+                    <span className='font-semibold'> UserId</span>: {order.user_id} <br />
+                    <span className='font-semibold'> User name </span>: {userNames[order.user_id] || 'loading...'} <br />
+                    <span className='font-semibold'> OrderId </span>: {order._id} <br />
+                    <span className='font-semibold'> ProductId </span> : {order.product_id} <br />
+                    <span className='font-semibold'> Quantity </span>: {order.quantity} <br />
+                    <span className='font-semibold'> Price </span>: {formatNumber(order.price)} RWF<br />
+                    <span className='font-semibold'> Placed on </span>: {new Date(order.createdAt).toLocaleDateString()} : {new Date(order.createdAt).toLocaleTimeString()} <br />
+                  </div>
+                  <Link to={`/order/${order.product_id}`} className='font-bold border border-indigo-900 py-1 px-3 rounded-xl'>view product</Link>
                 </div>
-                <Link to={`/order/${order.product_id}`} className='font-bold border border-indigo-900 py-1 px-3 rounded-xl'>view product</Link>
+              ))}
+              <div>
+                <Link to="/orders" className='px-2 py-1 bg-custom-dback font-semibold rounded-xl m-2'>More..</Link>
               </div>
-            )))}
+            </>
+          )}
         </div>
       </div>
     </div>

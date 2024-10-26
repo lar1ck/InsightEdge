@@ -17,6 +17,7 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 
 interface userProps {
   name: string,
+  image: string,
 }
 
 function App() {
@@ -179,7 +180,15 @@ function App() {
         <div className=' mt-3 flex justify-end'>
           <div className='py-1 px-4 rounded-full shadow-sm border-2 font-semibold flex items-center justify-between w-fit gap-x-2'>
             <div className='flex gap-2 items-center '>
-              <div className='w-[20px] h-[20px] rounded-full bg-slate-400'></div>
+              <div className='w-[20px] h-[20px] rounded-full bg-slate-400'>
+                {user.image && (
+                  <div >
+                    {user.image && (
+                    <img src={user.image} alt={`${user.name}'s profile picture`} className='rounded-full'/>
+                    )}
+                  </div>
+                )}
+              </div>
               <div className=''>{user.name}</div>
             </div>
             <div>
