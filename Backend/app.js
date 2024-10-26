@@ -281,6 +281,11 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+//verifying token api
+app.post("/verifyToken", verifyToken, (req, res) => {
+  res.status(200).json({ message: "Token valid", userId: req.userId });
+});
+
 //calculate Total sales
 app.get('/totalSales', async (req, res) => {
   try{
@@ -310,10 +315,6 @@ app.get('/ordersAmount' , async (req, res) => {
     res.status(500).json({message: err.message});
   }
 })
-
-app.post("/verifyToken", verifyToken, (req, res) => {
-  res.status(200).json({ message: "Token valid", userId: req.userId });
-});
 
 app.get("/start", (req, res) => {
   res.send("welcome to InsightEdge");

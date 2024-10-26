@@ -14,15 +14,19 @@ interface orderProps {
   createdAt: string,
 }
 
-interface userNameProps{
+interface userNameMap {
   name: string,
+}
+
+interface userNameMap {
+  [key: string]: string;
 }
 
 const Dashboard = () => {
   const [orders, setOrders] = useState<orderProps[]>([]);
   const [totalSales, setTotalSales] = useState(0);
   const [ordersAmount, setOrdersAmount] = useState(0);
-  const [userName, setUserName] = useState<userNameProps[]>([]);
+  const [userNames, setUserNames] = useState<userNameMap>({} as userNameMap);
 
   useEffect(() => {
     const getOrders = async () => {
@@ -58,20 +62,25 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    const getUserName = async () => {
+
+    const getUserNames = async () => {
       try {
+        const newUserNames = { ...userNames };
         for (const order of orders) {
-                const response = await axios.get(`http://localhost:3000/user/${order.user_id}`);
-                setUserName(response.data)
+          if (!newUserNames[order.user_id]) {
+            const response = await axios.get(`http://localhost:3000/user/${order.user_id}`);
+            newUserNames[order.user_id] = response.data.name;
+          }
         }
+        setUserNames(newUserNames);
       } catch (err) {
         console.error(err);
       }
     }
-    getUserName();
-  }, [orders]);
+    if (orders.length) getUserNames();
+  });
 
-  const formatNumber = (num : number): string => {
+  const formatNumber = (num: number): string => {
     return num.toLocaleString('en-US');
   }
 
@@ -153,24 +162,26 @@ const Dashboard = () => {
           <h1 className='text-2xl font-bold text-neutral-800'>Orders History</h1>
         </div>
         <div className=''>
-          
+
           {orders.length === 0 ? (
             <div className='text-center items-center h-10 font-semibold text-xl text-neutral-400 p-6 font-mono text-'>
-              Looks like you're new, get some orders to get your insight 
+              Looks like you're new, get some orders to get your insight
             </div>
-          ): (
-          orders.map((order) => (
-            <div key={order._id} className='border-2 my-3 p-3 '>
-              user_id : {order.user_id} <br />
-              user name : {userName.name} <br />
-              order._id : {order._id} <br />
-              product_id: {order.product_id} <br />
-              quantity: {order.quantity} <br />
-              price: {formatNumber(order.price)} RWF<br />
-              createdAt: {new Date(order.createdAt).toLocaleDateString()} : {new Date(order.createdAt).toLocaleTimeString()} <br />
-              <Link to={`/order/${order.product_id}`} className='font-bold border py-1 px-3 rounded-xl'>view product</Link>
-            </div>
-          )))}
+          ) : (
+            orders.map((order) => (
+              <div key={order._id} className='border-2 my-3 p-3 '>
+                <div className='mb-2'>
+                <span className='font-semibold'> UserId</span>: {order.user_id} <br />
+                <span className='font-semibold'> User name </span>: {userNames[order.user_id] || 'loading...'} <br />
+                <span className='font-semibold'> OrderId </span>: {order._id} <br />
+                  <span className='font-semibold'> ProductId </span> : {order.product_id} <br />
+                  <span className='font-semibold'> Quantity </span>: {order.quantity} <br />
+                  <span className='font-semibold'> Price </span>: {formatNumber(order.price)} RWF<br />
+                  <span className='font-semibold'> Placed on </span>: {new Date(order.createdAt).toLocaleDateString()} : {new Date(order.createdAt).toLocaleTimeString()} <br />
+                </div>
+                <Link to={`/order/${order.product_id}`} className='font-bold border border-indigo-900 py-1 px-3 rounded-xl'>view product</Link>
+              </div>
+            )))}
         </div>
       </div>
     </div>

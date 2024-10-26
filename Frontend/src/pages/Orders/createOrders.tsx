@@ -82,7 +82,7 @@ const CreateOrders = () => {
                         value={formData.user_id}
                         onChange={handleChange}
                         placeholder=''
-                        className="mt-1 cursor-not-allowed block w-full border border-gray-300 bg-gray-300 outline-none rounded-md p-2 "
+                        className="mt-1 cursor-not-allowed  block w-full border border-gray-300 bg-gray-300 outline-none rounded-md p-2 "
                         disabled
                     />
                 </div>
