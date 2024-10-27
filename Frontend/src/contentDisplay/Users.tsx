@@ -52,7 +52,7 @@ const Users = () => {
             </div>
             <div className='grid grid-cols-2 gap-4'>
                 {users.map((user) => (
-                    <div className=' border border-neutral-600 p-2'>
+                    <div className=' border border-neutral-600 p-2' key={user._id}>
                         <div key={user._id} className=''>
                             ID : {user._id} <br />
                             name : {user.name} <br />

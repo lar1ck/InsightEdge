@@ -3,7 +3,6 @@ import axios from 'axios'
 import './dashboard.css'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { IoSearchSharp } from "react-icons/io5";
 
 interface orderProps {
   _id: string,
@@ -113,7 +112,7 @@ const Dashboard = () => {
         <div className='flex p-2 items-center gap-x-3'>
           <div className='size-20 bg-custom-dback rounded-full'>
             {userDet.image && (
-              <img src={userDet.image} className='rounded-full' alt="your profile" />
+              <img src={userDet.image} className='rounded-full size-20' alt="your profile" />
             )}
           </div>
           <div>
@@ -125,9 +124,7 @@ const Dashboard = () => {
             </p>
           </div>
         </div>
-        <div className='w-fit h-fit rounded-full bg-slate-300 flex items-center p-1'>
-          <IoSearchSharp className='bg-[var(--parent-bg)] text-2xl font-bold text-neutral-500' />
-        </div>
+
       </div>
       {/* div 2 */}
       <div className='px-3 py-5 bg-gradient-to-r from-orange-400 via-red-300 to-purple-600 w-full h-[150px] mt-5 rounded-xl flex gapx-4'>

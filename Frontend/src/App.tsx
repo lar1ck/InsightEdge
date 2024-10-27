@@ -11,7 +11,6 @@ import { FaCaretUp } from "react-icons/fa";
 import Tr_bg_logo from "./assets/IElogo/tr_bg_logo.png"
 import { FaListUl } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
-import { TbSettings2 } from "react-icons/tb";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 
 
@@ -184,7 +183,7 @@ function App() {
                 {user.image && (
                   <div >
                     {user.image && (
-                    <img src={user.image} alt={`${user.name}'s profile picture`} className='rounded-full'/>
+                    <img src={user.image} alt={`${user.name}'s profile picture`} className='rounded-full w-[20px] h-[20px]'/>
                     )}
                   </div>
                 )}
@@ -210,10 +209,6 @@ function App() {
         </div>
           {isProfileOpen && (
             <div className='w-[150px]  bg-slate-50 flex flex-col mt-1 font-semibold'>
-              <Link to='/settings' className='border-b p-1 px-3 bg-slate-50 border-zinc-500 flex items-center gap-2'>
-                <TbSettings2 className='bg-[var(--parent-bg)]'/>
-                Settings
-              </Link>
               <Link to='/Profile' className='border-b p-1 px-3 bg-slate-50 border-zinc-500 flex items-center gap-2'>
                 <HiOutlineUserCircle className='bg-[var(--parent-bg)]'/>
                 Profile

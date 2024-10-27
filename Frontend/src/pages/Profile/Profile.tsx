@@ -35,7 +35,7 @@ const Profile = () => {
                     <div className='size-40 rounded-full bg-slate-400'>
                         {userDetails.image && (
                             <div>
-                                <img src={userDetails.image} alt="" className=' rounded-full'/>
+                                <img src={userDetails.image} alt="" className='size-40 rounded-full'/>
                             </div>
                         )}
                     </div>

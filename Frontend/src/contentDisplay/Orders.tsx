@@ -52,7 +52,7 @@ const Orders = () => {
             }
         }
         if (orders.length) getUserNames();
-    })
+    },[orders])
 
     return (
         <div>

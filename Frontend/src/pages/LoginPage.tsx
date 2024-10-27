@@ -61,7 +61,7 @@ const Login = () => {
     <div className="flex h-screen">
       <div className="w-[60%] lftimg"></div>
       <div className="w-[40%] ">
-        <p className="text-2xl ml-3 -mb-2 mt-2"><Back /></p>
+        <div className="text-2xl ml-3 -mb-2 mt-2"><Back /></div>
         <div className=" pt- px-12 items-center flex flex-col ">
           <img src={Logo} alt="" className="h-[120px] " />
           <h1 className="font-bold text-3xl font-sans text-center ">
