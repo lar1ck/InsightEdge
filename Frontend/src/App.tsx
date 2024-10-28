@@ -178,7 +178,7 @@ function App() {
       <div className='ml- h-screen w-[20%] pt-2 px-3 ml-2 rounded-l-2xl'>
         <div className=' mt-3 flex justify-end'>
           <div className='py-1 px-4 rounded-full shadow-sm border-2 font-semibold flex items-center justify-between w-fit gap-x-2'>
-            <div className='flex gap-2 items-center '>
+            <button onClick={toogleOpenProfile} className='flex gap-2 items-center '>
               <div className='w-[20px] h-[20px] rounded-full bg-slate-400'>
                 {user.image && (
                   <div >
@@ -189,7 +189,7 @@ function App() {
                 )}
               </div>
               <div className=''>{user.name}</div>
-            </div>
+            </button>
             <div>
               <button onClick={toogleOpenProfile} className='items-center flex'>
                 {isProfileOpen ? (
