@@ -21,6 +21,18 @@ const CreateProduct = () => {
     });
   };
 
+  const handleImageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if(file){
+      const reader = new FileReader();
+      reader.onload = () => {
+        const baseString = reader.result as string;
+        setFormData((prev) => ({...prev, image: baseString}))
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -136,10 +148,10 @@ const CreateProduct = () => {
             <div className='w-[80%]'>
               <label className="block text-sm font-medium text-gray-700">Image URL</label>
               <input
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
+                type="file"
+                // name="image"
+                // value={formData.image}
+                onChange={handleImageChange}
                 className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
                 required
               />
