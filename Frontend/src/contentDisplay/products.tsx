@@ -61,7 +61,7 @@ const Products = () => {
                     <div key={product._id} className="border-b-4 border-neutral-400 my-2  p-5">
                         <div className=" rounded-lg flex  gap-1">
                             <div className='w-[50%]'>
-                                <img src={product.image} className='rounded-lg max-w-[300px]' alt={`this is an image of ${product.name}`} />
+                                <img src={product.image} className='rounded-lg max-w-[300px] max-h-[400px] hover:scale-105 duration-300' alt={`this is an image of ${product.name}`} />
                             </div>
                             <div className="max-w-[50%] mb-1">
                                 <h2 className="text-xl font-bold  mb-2 ">{product.name}</h2>

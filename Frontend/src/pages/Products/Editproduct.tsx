@@ -57,6 +57,18 @@ const Editproduct = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const handleImageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if(file){
+            const reader = new FileReader();
+            reader.onload = () => {
+                const baseString = reader.result as string;
+                setFormData((prev) => ({...prev, image: baseString}))
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => { 
         const confirmUpdate = window.confirm('Are you sure you want to edit this product?');
         if(confirmUpdate){
@@ -154,10 +166,10 @@ const Editproduct = () => {
                             <div className='w-[80%]'>
                                 <label className="block text-sm font-medium text-gray-700">Image</label>
                                 <input
-                                    type="text"
+                                    type="file"
                                     name="image"
-                                    value={formData.image}
-                                    onChange={handleChange}
+                                    // value={formData.image}
+                                    onChange={handleImageChange}
                                     className="mt-1 block w-full border border-gray-300 outline-none rounded-md p-2 "
                                 />
                             </div>
