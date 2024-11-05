@@ -8,6 +8,7 @@ interface usersProps {
     name: string;
     age: number;
     email: string;
+    image:string,
 }
 
 const Users = () => {
@@ -54,6 +55,7 @@ const Users = () => {
                 {users.map((user) => (
                     <div className=' border border-neutral-600 p-2' key={user._id}>
                         <div key={user._id} className=''>
+                            <img src={user.image} alt="" className='size-32 rounded-full m-5' />
                             ID : {user._id} <br />
                             name : {user.name} <br />
                             age : {user.age} <br />
