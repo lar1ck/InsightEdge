@@ -134,8 +134,8 @@ const Dashboard = () => {
           </div>
           <div className='bg-[var(--parent-bg)]'>
             <p className='bg-[var(--parent-bg)]'>Monthly revenue</p>
-            <p className='bg-[var(--parent-bg)] text-lg text-white font-bold'>RWF {formatNumber(totalSales)} <span className='ml-3 font-semibold bg-white text-blue-900 rounded-full p-1 text-sm'>+2.4%</span></p>
-            <p className='bg-[var(--parent-bg)]'>Previous month <span className='bg-[var(--parent-bg)] text-white font-bold'>$1.7k</span></p>
+            <p className='bg-[var(--parent-bg)] text-lg text-white font-bold'>RWF {formatNumber(totalSales)} <span className='ml-3 font-semibold bg-white text-blue-900 rounded-full p-1 text-sm'>+0.0%</span></p>
+            <p className='bg-[var(--parent-bg)]'>Previous month <span className='bg-[var(--parent-bg)] text-white font-bold'>$0.0k</span></p>
           </div>
         </div>
         <div className='w-[33%] bg-[var(--parent-bg)] flex gap-x-4 items-center font-semibold'>
@@ -144,8 +144,8 @@ const Dashboard = () => {
           </div>
           <div className='bg-[var(--parent-bg)]'>
             <p className='bg-[var(--parent-bg)]'>Amount of Sales</p>
-            <p className='bg-[var(--parent-bg)] text-lg text-white font-bold'>{formatNumber(ordersAmount)} <span className='ml-3 font-semibold bg-white text-blue-900 rounded-full p-1 text-sm'>+1.4%</span></p>
-            <p className='bg-[var(--parent-bg)] '>Previous month <span className='bg-[var(--parent-bg)] text-white font-bold'>$3.1k</span></p>
+            <p className='bg-[var(--parent-bg)] text-lg text-white font-bold'>{formatNumber(ordersAmount)} <span className='ml-3 font-semibold bg-white text-blue-900 rounded-full p-1 text-sm'>+0.0%</span></p>
+            <p className='bg-[var(--parent-bg)] '>Previous month <span className='bg-[var(--parent-bg)] text-white font-bold'>$0.0k</span></p>
           </div>
         </div>
         <div className='w-[33%] bg-[var(--parent-bg)] flex gap-x-4 items-center font-semibold'>
@@ -154,8 +154,8 @@ const Dashboard = () => {
           </div>
           <div className='bg-[var(--parent-bg)]'>
             <p className='bg-[var(--parent-bg)]'>Total Profit</p>
-            <p className='bg-[var(--parent-bg)] text-lg text-white font-bold'>RWF {formatNumber(totalSales)} <span className='ml-3 font-semibold bg-white text-blue-900 rounded-full p-1 text-sm'>+4.3%</span></p>
-            <p className='bg-[var(--parent-bg)]'>Previous year <span className='bg-[var(--parent-bg)] text-white font-bold'>$8.9k</span></p>
+            <p className='bg-[var(--parent-bg)] text-lg text-white font-bold'>RWF {formatNumber(totalSales)} <span className='ml-3 font-semibold bg-white text-blue-900 rounded-full p-1 text-sm'>+0.0%</span></p>
+            <p className='bg-[var(--parent-bg)]'>Previous year <span className='bg-[var(--parent-bg)] text-white font-bold'>$.0k</span></p>
           </div>
         </div>
       </div>
@@ -165,10 +165,10 @@ const Dashboard = () => {
           <h1 className='text-2xl font-semibold'>Total Sales & Cost</h1>
           <p className='text-sm text-neutral-500 font-semibold'>Last 60 days</p>
           <div className='mt-10 items-center '>
-            <span className='text-purple-800 text-3xl font-bold items-center flex gap-2'> <h1>RWF {formatNumber(totalSales)}</h1><span className='bg-green-300 text-green-600 px-2 text-sm rounded-full'>+5.4%</span></span>
+            <span className='text-purple-800 text-3xl font-bold items-center flex gap-2'> <h1>RWF {formatNumber(totalSales)}</h1><span className='bg-green-300 text-green-600 px-2 text-sm rounded-full'>+0.0%</span></span>
           </div>
           <div className='flex items-center'>
-            <span className=' text-green-400 px-2 font-bold rounded-full'>+5.4% </span>
+            <span className=' text-green-400 px-2 font-bold rounded-full'>+0.0% </span>
             <p className='font-semibold text-neutral-600 text-sm'>vs prev 60 days</p>
           </div>
         </div>

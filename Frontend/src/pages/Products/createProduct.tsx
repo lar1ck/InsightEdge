@@ -27,7 +27,7 @@ const CreateProduct = () => {
       const reader = new FileReader();
       reader.onload = () => {
         const baseString = reader.result as string;
-        setFormData((prev) => ({...prev, image: baseString}))
+        setFormData((prev) => ({...prev, image: baseString}));
       }
       reader.readAsDataURL(file);
     }
