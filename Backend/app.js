@@ -316,7 +316,7 @@ app.get('/ordersAmount' , async (req, res) => {
   }
 })
 
-app.get("/start", (req, res) => {
+app.get("/InsightEdge", (req, res) => {
   res.send("welcome to InsightEdge");
 });
 

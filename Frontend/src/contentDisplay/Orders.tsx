@@ -54,6 +54,10 @@ const Orders = () => {
         if (orders.length) getUserNames();
     },[orders])
 
+    const formatNumber = (num: number): string => {
+        return num.toLocaleString('en-us');
+    }
+
     return (
         <div>
             <h1 className='text-3xl font-semibold my-3'> Orders</h1>
@@ -74,7 +78,7 @@ const Orders = () => {
                             <span className='font-semibold'> User name </span>: {userNames[order.user_id] || 'Loading...'}
                         </div>
                         <div>
-                            <span className='font-semibold'> Price </span>: {order.price}
+                            <span className='font-semibold'> Price </span>: {formatNumber(order.price)}
                         </div>
                         <div>
                             <span className='font-semibold'> Placed on </span>: {new Date(order.createdAt).toLocaleDateString()} {new Date(order.createdAt).toLocaleTimeString()}
