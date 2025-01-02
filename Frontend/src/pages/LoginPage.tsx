@@ -7,16 +7,6 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
-// interface LoginResponse {
-//   token: string;
-//   user: {
-//     _id: string;
-//     name: string;
-//     age: number;
-//     email: string;
-//     // other user properties if needed
-//   };
-// }
 
 const Login = () => {
   const [email, setEmail] = useState("");
