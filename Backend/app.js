@@ -16,7 +16,10 @@ app.use(express.json({limit: '10mb'}));
 const mogooseURI = "mongodb://localhost:27017/InsightEdge";
 const connectdb = async () => {
   try {
-    await mongoose.connect(mogooseURI);
+    await mongoose.connect(mogooseURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("connected to mongodb");
   } catch (err) {
     res.status(400).json({ message: err.message });
