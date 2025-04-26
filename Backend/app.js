@@ -13,13 +13,18 @@ const Users = require("./models/usersModel");
 app.use(cors());
 app.use(express.json({limit: '10mb'}));
 
-const mogooseURI = "mongodb://localhost:27017/InsightEdge";
+const isDocker = process.env.IS_DOCKER === 'true';
+const mongooseURI = isDocker 
+  ? process.env.MONGO_URI || "mongodb://mongo:27017/InsightEdge"
+  : process.env.MONGO_URI || "mongodb://localhost:27017/InsightEdge";
+
 const connectdb = async () => {
   try {
-    await mongoose.connect(mogooseURI);
+    await mongoose.connect(mongooseURI);
     console.log("connected to mongodb");
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    console.error("MongoDB connection failed:", err.message);
+    process.exit(1);
   }
 };
 connectdb();
