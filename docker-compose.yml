@@ -13,7 +13,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://localhost:27017/InsightEdge
+      - MONGO_URI=mongodb://mongo:27017/InsightEdge
     depends_on:
       - mongo
     volumes:
@@ -24,8 +24,6 @@ services:
     build: ./frontend
     ports:
       - "5173:5173"
-    volumes:
-      - ./frontend:/app
     restart: always
     depends_on:
       - backend
