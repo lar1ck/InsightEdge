@@ -329,7 +329,7 @@ app.listen(PORT, () => {
   console.log(`listening on port: http://localhost:${PORT}`);
 });
 
- 
+
 // const express = require("express");
 // const cors = require("cors");
 // const dotenv = require("dotenv");
@@ -346,10 +346,10 @@ app.listen(PORT, () => {
 
 // app.get("/InsightEdge", (req, res) => res.send("Welcome to InsightEdge"));
 
-// app.use("/api/products", require("./routes/productRoutes"));
-// app.use("/api/users", require("./routes/userRoutes"));
-// app.use("/api/orders", require("./routes/orderRoutes"));
-// app.use("/api/auth", require("./routes/authRoutes"));
+// app.use("/products", require("./routes/productRoutes"));
+// app.use("/users", require("./routes/userRoutes"));
+// app.use("/orders", require("./routes/orderRoutes"));
+// app.use("/auth", require("./routes/authRoutes"));
 
 // app.listen(PORT, () => {
 //   console.log(`Server running on http://localhost:${PORT}`);
