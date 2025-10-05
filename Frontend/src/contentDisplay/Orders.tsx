@@ -21,7 +21,7 @@ const Orders = () => {
 
     useEffect(() => {
         const getAllOrders = async () => {
-            const orders = await axios.get('http://localhost:3000/orders');
+            const orders = await axios.get('http://localhost:3000/api/orders');
             setOrders(orders.data);
         }
         getAllOrders();
@@ -42,7 +42,7 @@ const Orders = () => {
                 const newUserNames = { ...userNames };
                 for (const order of orders) {
                     if (!newUserNames[order.user_id]) {
-                        const response = await axios.get(`http://localhost:3000/user/${order.user_id}`);
+                        const response = await axios.get(`http://localhost:3000/api/users/${order.user_id}`);
                         newUserNames[order.user_id] = response.data.name;
                     }
                 }

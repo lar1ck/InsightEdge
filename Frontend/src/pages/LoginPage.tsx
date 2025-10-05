@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("http://localhost:3000/login", { email, password });
+      const { data } = await axios.post("http://localhost:3000/api/auth/login", { email, password });
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       console.log('login successful');
@@ -77,7 +77,7 @@ const Login = () => {
                 value={password}
                 onChange={handleChange}
                 className="text-black border-b-2 border-black outline-none bg-slate-200 p-2 w-[350px] font-sans font-semibold"
-                placeholder="password"
+                placeholder="Password"
                 required
 
               />
@@ -88,7 +88,7 @@ const Login = () => {
                     <p>remember me</p> */}
                   </label>
                 </div>
-                <div className='mr-16 text-sm text-neutral-600 font-semibold hover:underline'>
+                <div className='mr-28 text-sm text-neutral-600 font-semibold hover:underline'>
                   <Link to="/signup">Don't have an account ?</Link>
                 </div>
               </div>

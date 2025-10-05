@@ -23,7 +23,7 @@ const ProtectedRoute = () => {
 
             try{
 
-                const response = await axios.post('http://localhost:3000/verifyToken', {} , {
+                const response = await axios.post('http://localhost:3000/api/auth/verify-token', {} , {
                     headers: {
                         "Authorization":token,
                     }

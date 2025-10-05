@@ -32,7 +32,7 @@ const Editproduct = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/product/${id}`);
+                const res = await axios.get(`http://localhost:3000/api/products/${id}`);
                 setProduct(res.data);
                 setFormData({
                     name: res.data.name,
@@ -73,7 +73,7 @@ const Editproduct = () => {
         const confirmUpdate = window.confirm('Are you sure you want to edit this product?');
         if(confirmUpdate){
             e.preventDefault();
-            await axios.put(`http://localhost:3000/product/${id}`, formData);
+            await axios.put(`http://localhost:3000/api/products/${id}`, formData);
             navigate("/products");
         }else{
             navigate("/products");

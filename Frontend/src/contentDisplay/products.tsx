@@ -23,7 +23,7 @@ const Products = () => {
 
     useEffect(() => {
         const getproduct = async () => {
-            const products = await axios.get("http://localhost:3000/products");
+            const products = await axios.get("http://localhost:3000/api/products");
             setProducts(products.data);
         };
         getproduct();
@@ -33,7 +33,7 @@ const Products = () => {
         const confirmDelete = window.confirm('Are you sure you want to delete this product');
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:3000/product/${id}`);
+                await axios.delete(`http://localhost:3000/api/products/${id}`);
                 setProducts(products.filter(products => products._id != id));
             } catch (err) {
                 console.error("Error deleting product", err);

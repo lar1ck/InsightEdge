@@ -38,7 +38,7 @@ const CreateProduct = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post(" http://localhost:3000/product", formData);
+      const res = await axios.post(" http://localhost:3000/api/products", formData);
       console.log('Product created successfully', res);
       setFormData({
         name: '',

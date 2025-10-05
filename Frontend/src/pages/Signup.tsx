@@ -31,7 +31,7 @@ const Signup = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const user = await axios.post('http://localhost:3000/user', formData);
+            const user = await axios.post('http://localhost:3000/api/auth/register', formData);
             console.log("user created", user);
             setFormData({
                 email: '',
@@ -105,7 +105,7 @@ const Signup = () => {
                                     </label>
                                 </div>
                                 <Link to='/login'>
-                                    <div className='pr-5 text-sm text-neutral-600 font-semibold hover:underline'>
+                                    <div className='pr-24 text-sm text-neutral-600 font-semibold hover:underline'>
                                         Already have an account ?
                                     </div>
                                 </Link>

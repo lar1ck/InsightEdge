@@ -24,7 +24,7 @@ const CreateOrders = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const order = await axios.post('http://localhost:3000/order', formData);
+            const order = await axios.post('http://localhost:3000/api/orders', formData);
             console.log("order sucessfully placed", order);
             setFormData({
                 product_id: "",

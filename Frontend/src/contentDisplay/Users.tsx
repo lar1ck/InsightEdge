@@ -17,7 +17,7 @@ const Users = () => {
     useEffect(() => {
         const getAllUsers = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/users");
+                const res = await axios.get("http://localhost:3000/api/users");
                 setUsers(res.data);
             } catch (err) {
                 console.error(err);
@@ -30,7 +30,7 @@ const Users = () => {
         try {
             const confirmDel = window.confirm(`Are you sure you want to delete this user`);
             if (confirmDel) {
-                await axios.delete(`http://localhost:3000/user/${_id}`);
+                await axios.delete(`http://localhost:3000/api/users/${_id}`);
                 setUsers(users.filter(users => users._id != _id));
             }
 

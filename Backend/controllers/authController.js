@@ -1,6 +1,10 @@
 const UsersAuth = require("../models/usersModel");
 const bcryptjs = require("bcryptjs");
 const jwtToken = require("jsonwebtoken");
+const dontenv = require("dotenv");
+const jwt = require("jsonwebtoken");
+
+dontenv.config();
 
 exports.register = async (req, res) => {
   try {
@@ -23,6 +27,7 @@ exports.login = async (req, res) => {
     const token = jwtToken.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: "1h" });
     res.status(200).json({ token, user });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message});
   }
 };
+

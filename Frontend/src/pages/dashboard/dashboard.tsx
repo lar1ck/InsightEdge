@@ -32,7 +32,7 @@ const Dashboard = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/orders');
+        const response = await axios.get('http://localhost:3000/api/orders');
         setOrders(response.data);
       } catch (err) {
         console.error(err);
@@ -42,7 +42,7 @@ const Dashboard = () => {
 
     const getTotalSales = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/totalSales');
+        const response = await axios.get('http://localhost:3000/api/orders/total-sales');
         setTotalSales(response.data);
 
       } catch (err) {
@@ -53,7 +53,7 @@ const Dashboard = () => {
 
     const getOrdersAmount = async () => {
       try {
-        const orderAm = await axios.get('http://localhost:3000/ordersAmount');
+        const orderAm = await axios.get('http://localhost:3000/api/orders/total-orders');
         setOrdersAmount(orderAm.data);
       } catch (err) {
         console.error(err);
@@ -69,7 +69,7 @@ const Dashboard = () => {
         const newUserNames = { ...userNames };
         for (const order of orders) {
           if (!newUserNames[order.user_id]) {
-            const response = await axios.get(`http://localhost:3000/user/${order.user_id}`);
+            const response = await axios.get(`http://localhost:3000/api/users/${order.user_id}`);
             newUserNames[order.user_id] = response.data.name;
           }
         }
